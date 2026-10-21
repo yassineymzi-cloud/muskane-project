@@ -4,7 +4,11 @@ Arabic RTL, mobile-first perfume storefront. Buildless HTML, CSS and JavaScript;
 
 ## Local preview
 
-From this repository run `python3 -m http.server 4173 --bind 127.0.0.1`, then open **http://localhost:4173**. Remote workspaces require port 4173 forwarded to your device. This command does not deploy the website.
+Download and extract the complete repository, then double-click `index.html` in Windows/Chrome. No server, localhost or Chrome security changes are required. Keep `catalog.js`, `app.js` and `styles.css` next to `index.html`. Product photos still use their original remote URLs and require internet access.
+
+`catalog.js` is the browser-loadable copy of `catalog.json`; it is loaded as a classic script before `app.js`, so file:// does not require a JSON fetch. Keep both catalog files synchronized when changing source data.
+
+Optional HTTP preview: from this repository run `python3 -m http.server 4173 --bind 127.0.0.1`, then open **http://localhost:4173**. Remote workspaces require port 4173 forwarded to your device. This command does not deploy the website.
 
 ## Files and source
 
