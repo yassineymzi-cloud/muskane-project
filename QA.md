@@ -1,6 +1,6 @@
 # Verification and security review
 
-## Completed checks
+## Previous baseline checks
 
 - `npm run lint`: JavaScript syntax, catalogue uniqueness/category references, Arabic/RTL entry attributes and referenced entry assets passed.
 - `npm test`: three commerce behavior tests passed: cart merge without mutation, quantity cap, and rejection of prototype checkout.
@@ -12,13 +12,28 @@
 - All 16 distinct homepage route destinations resolved. No uncaught browser JavaScript errors in that test pass.
 - Screenshots inspected for mobile and desktop layout. Original local SVG illustrations load without external services.
 
-The optional reproducible browser scenarios are `tests/browser-qa.py` and `tests/browser-accessibility.py`. It requires Python Playwright and an already installed `/usr/bin/chromium`, with `npm run dev` running first. It is separate from the dependency-free `npm test`. It writes ignored screenshots under `work/`; create that directory first. Browser installations/permissions vary by machine.
+These results describe the initial storefront baseline. The current polish pass must rerun relevant checks before its commit; do not treat the historical list as evidence for changed layouts or the regenerated preview.
+
+## Current polish pass
+
+- `npm run lint`, `npm test` (three cart tests and one preview-generation test), `npm run build`, and `npm run preview` passed.
+- Chromium checks at 360, 390, 768, 1024 and 1440px covered the homepage, all four collection routes, a sample-pack product and search, with no horizontal overflow.
+- Existing shopping-flow and keyboard suites passed: filters, sort, empty states, Arabic search/injection input, gallery, cart quantity/remove/persistence, mobile menu, FAQ, skip link and modal focus restoration. All 16 homepage destinations resolved.
+- Visual screenshots reviewed for desktop and mobile: ivory/charcoal hero, demo-labelled product cards, four-vial pack art, collection introductions and the review placeholder. Card add buttons are at least 44px high at 390px.
+- The standalone artifact rendered in Desktop, Tablet (768px) and Mobile (390px) modes. Embedded assets, collection navigation and demo cart passed without external requests; checkout remained disabled.
+- Fixed embedded fragment navigation so it stays inside `about:srcdoc`; fixed the source skip link so it preserves the storefront route. A regression assertion checks the homepage survives skip-link activation.
+- Exact artifact bytes also rendered in an originless document with zero requests, including collection/product navigation, Back history and the in-memory cart fallback. Direct `file://` navigation is blocked by the managed browser policy, so that exact launch path was not exercised here.
+- No uncaught browser JavaScript errors or failed asset responses in the final browser pass. No production connection or deployment occurred.
+- Staged-file secret-pattern review passed; generated build output, dependencies and scratch screenshots were excluded from the commit.
+
+
+The optional reproducible browser scenarios are `tests/browser-qa.py`, `tests/browser-accessibility.py` and `tests/browser-polish.py`. They require Python Playwright and an already installed `/usr/bin/chromium`, with `npm run dev` running first. They are separate from the dependency-free `npm test` and write ignored screenshots under `work/`; create that directory first. Browser installations/permissions vary by machine. The polish scenario additionally expects `python3 -m http.server 4174 --bind 127.0.0.1 --directory previews`; set `PREVIEW_URL` if its URL differs.
 
 ## Accessibility basics
 
 Arabic document language and RTL direction; skip link; landmark navigation; labeled search, sort, price-filter and quantity controls; descriptive product actions; visible focus outlines; native FAQ details; modal cart dialog with Escape and native focus containment/restoration; live cart feedback; text alongside icon-only controls; reduced-motion CSS. Product gallery thumbnails expose pressed state. Cart quantity updates/removal restore focus to an available control instead of leaving focus on a removed element.
 
-Near-black body text and muted gray are used on white/off-white; gold is mainly decorative. Mobile layouts use two-column product cards, a compact hero and a sticky product CTA. No claim of formal WCAG conformance is made: screen-reader/device testing remains necessary.
+Charcoal body text and muted gray are used on ivory/off-white; gold is mainly decorative. Mobile layouts use two-column product cards, a compact hero and a sticky product CTA. No claim of formal WCAG conformance is made: screen-reader/device testing remains necessary.
 
 ## Security review
 

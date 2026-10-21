@@ -2,7 +2,7 @@
 
 ## Boundary and current status
 
-This is a local storefront prototype built from an almost-empty repository. There is no YouCan API connection, order submission, payment processing or deployment. All six products, prices, notes, discounts and illustrations are demo content. No YouCan credentials, runtime HTML or customer data were used.
+This is a standalone storefront prototype maintained in the GitHub project on the `work` branch. This task authorizes local previews and repository changes only; it does not authorize connecting to, editing or publishing the live YouCan store. There is no YouCan API connection, order submission, payment processing or deployment. All six products, prices, notes, discounts and illustrations are demo content. No YouCan credentials, runtime HTML or customer data were used.
 
 Keep YouCan as the production source of truth for product/variant IDs, inventory, prices, cart, checkout, orders, delivery rules and Meta Pixel. The precise theme capabilities and supported cart interfaces of this store have not been inspected. Do not invent API endpoints or assume that a public API supports checkout.
 
@@ -14,6 +14,23 @@ Keep YouCan as the production source of truth for product/variant IDs, inventory
 - Approved Arabic copy and independent desktop/mobile hero art direction.
 
 Transfer these into a duplicate/unpublished YouCan theme first. Namescope styles if YouCan's existing theme uses conflicting selectors. Preserve required platform scripts/forms and supported theme bindings. Adapt the shared layout to the actual theme partial/template structure; this repository does not assert YouCan template syntax.
+
+## Exact replacement checklist
+
+These are preparation instructions for a separately authorized integration. Nothing below is activated by this prototype.
+
+| Area | Current prototype | Replace with before any production release |
+| --- | --- | --- |
+| Products | Fictional records in `src/data/products.js`, including names, notes, sizes and IDs | Approved YouCan products/variants, actual IDs, availability and accurate descriptions; validate and escape all imported content |
+| Prices | Illustrative DH display, old prices and discount badges | Platform-confirmed MAD amounts, real sale eligibility, tax rules and currency formatting; never trust client totals |
+| Images | Original local SVG demonstrations and separate mobile/desktop hero assets | Licensed, accurate product/gallery/category/hero images with dimensions, optimized files and descriptive alt text |
+| Collections | Four demo collection routes plus `all`/`packs` | Actual YouCan category IDs, backend-generated URLs, product membership, filters and pagination |
+| Sample packs | Fictional four-by-10 ml discovery concept | Confirmed fragrance contents, volume per vial, total count, packaging, availability and approved offer price |
+| Cart | `src/adapters/youcan.js` with validated localStorage demo entries | Supported platform add/update/remove actions, server-confirmed cart lines/totals and native session/CSRF handling |
+| Checkout | Disabled action; no order or payment endpoint | YouCan's own checkout flow and confirmed-order handling, verified in an approved test workflow |
+| Policies/contact | Provisional shipping, payment, returns, privacy and contact content | Approved business/legal copy, actual delivery/COD terms, contact channels and public social links |
+| Meta Pixel | No Pixel, analytics or tag manager loaded | Existing YouCan-owned tracking and consent setup; verify a single PageView source, correct Purchase timing and deduplication |
+| Reviews | Clearly labeled empty/placeholder presentation | Genuine, approved customer reviews; verified ratings/counts only if actually available |
 
 ## Adaptation and data mapping
 
@@ -48,7 +65,7 @@ Use backend-generated URLs and approved handles; do not assume `/products/` or `
 - Read server-confirmed cart line IDs, counts, totals, stock limits and errors. Wire remove/update to real line IDs, not these demo IDs.
 - Handle slow/failing requests and duplicate clicks. Announce success or errors via the live status region.
 - Stop reading/writing `muskane-demo-cart` in production; never migrate it into a real order without user selection and backend validation.
-- Compute shipping eligibility with real supported cart rules, including discounts and destination constraints. The demo threshold bar is only illustrative.
+- Compute any shipping eligibility message with real supported cart rules, including discounts and destination constraints. A demo threshold or promotional message is not an approved shipping policy.
 
 ## Checkout and orders
 
@@ -69,7 +86,7 @@ This prototype loads no Pixel, analytics, fingerprinting, or tag manager. Leave 
 - `config.heroDesktop` / `heroMobile`: replace the separate SVGs with licensed product photography, correctly cropped for each breakpoint; use efficient WebP/AVIF with fallback where supported.
 - `assets/bottle.svg`, `assets/pack.svg`: demonstration drawings, not actual product imagery. Replace card, category, gallery and discovery images with accurate assets from the approved catalogue; retain explicit dimensions and descriptive alt text.
 - Category imagery currently reuses the demo illustrations; supply distinct approved category assets when adapting templates.
-- Replace fictional Latin/Arabic names, notes, prices, strike-through prices and sizes. Only advertise verified discounts and best sellers from actual sales data.
+- Replace fictional Latin/Arabic names, notes, DH prices, strike-through prices and sizes. The four-by-10 ml sample packs are illustrative and require confirmed contents and volumes. Only advertise verified discounts and best sellers from actual sales data.
 - Keep the review section empty/clearly labeled until genuine approved reviews are available. Never add fictional star ratings or counts.
 - Confirm shipping coverage, free-shipping threshold, delivery times, COD terms, returns, contact channels, social accounts and legal policy copy.
 
@@ -82,6 +99,10 @@ Render Arabic `lang` and `dir` on the actual theme document. Emit per-page title
 ## Never copy from generated store HTML
 
 Do not commit session cookies, CSRF values, checkout/session IDs, private IDs, bearer/API tokens, license keys, customer/order data, FingerprintJS code, generated script bundles, dynamic runtime metadata, analytics/pixel snippets or session-specific cart markup. Use supported fresh runtime platform mechanisms and public theme configuration. No private API secrets belong in a browser bundle. Frontend configuration is always public.
+
+## Standalone review file
+
+`npm run preview` regenerates `previews/muskane-review.html` from checked-in source. Download that raw file from the GitHub `work` branch and open it directly in Chrome; Desktop/Tablet/Mobile controls change the visual review width. The artifact embeds local assets and demo code, has no production commerce connection, and must be regenerated after source changes. It is not a deployable YouCan theme export.
 
 ## Concrete next steps
 

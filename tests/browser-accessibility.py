@@ -11,6 +11,9 @@ with sync_playwright() as p:
  assert page.locator('.skip').evaluate('(el)=>el===document.activeElement')
  page.keyboard.press('Enter')
  assert page.locator('main').evaluate('(el)=>el===document.activeElement')
+ page.wait_for_timeout(100)
+ assert page.locator('.hero h1').count()==1
+ assert page.url.endswith('/')
  page.goto('http://127.0.0.1:4173/#/product/amber-noir')
  assert page.locator('.mobile-purchase').is_visible()
  page.click('#sticky-add')
