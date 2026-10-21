@@ -417,6 +417,33 @@ window.MUSKANE_CATALOG = {
           }
         }
       ]
+    },
+    {
+      "id": "9532c5ff-ff4b-4c29-b355-fa09c484f8a9",
+      "slug": "angham-libbra-prohibit-rouge-vulcan-baie",
+      "name": "10ml ×4  | Angham – Libbra – Prohibit Rouge – Vulcan Baie",
+      "price": 199,
+      "currency": "MAD",
+      "url": "https://muskaneparfum.com/products/angham-libbra-prohibit-rouge-vulcan-baie",
+      "descriptionHtml": null,
+      "categories": [
+        {
+          "name": "باكات نسائية",
+          "slug": "packs-femme"
+        }
+      ],
+      "images": [
+        {
+          "url": "https://assets.youcan.shop/stores/7f085f1e9e8fb6db9b329d4c8b1e85527120283b/coffret-hivernal-de-quatre-parfums-feminins-FFEC2PkWqSGFFTzbfkNuKRXPe97.png",
+          "alt": "10ml ×4  | Angham – Libbra – Prohibit Rouge – Vulcan Baie",
+          "variants": {
+            "original": "https://assets.youcan.shop/stores/7f085f1e9e8fb6db9b329d4c8b1e85527120283b/coffret-hivernal-de-quatre-parfums-feminins-FFEC2PkWqSGFFTzbfkNuKRXPe97.png",
+            "sm": "https://assets.youcan.shop/stores/7f085f1e9e8fb6db9b329d4c8b1e85527120283b/coffret-hivernal-de-quatre-parfums-feminins-FFEC2PkWqSGFFTzbfkNuKRXPe97.png?width=108",
+            "md": "https://assets.youcan.shop/stores/7f085f1e9e8fb6db9b329d4c8b1e85527120283b/coffret-hivernal-de-quatre-parfums-feminins-FFEC2PkWqSGFFTzbfkNuKRXPe97.png?width=453",
+            "lg": "https://assets.youcan.shop/stores/7f085f1e9e8fb6db9b329d4c8b1e85527120283b/coffret-hivernal-de-quatre-parfums-feminins-FFEC2PkWqSGFFTzbfkNuKRXPe97.png?width=680"
+          }
+        }
+      ]
     }
   ],
   "sourceLinks": [
