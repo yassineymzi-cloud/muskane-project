@@ -39,6 +39,15 @@ The optional reproducible browser scenarios are `tests/browser-qa.py`, `tests/br
 - Existing keyboard and shopping suites rerun successfully. Updated responsive tests cover first-viewport imagery, compact header, visible controls, mobile/desktop ordering after resize, no card demo badges, retained preview notice and the standalone preview.
 - Lint, four automated tests, static build and preview generation rerun; final browser checks cover 360, 390, 768, 1024 and 1440px, navigation, cart and originless standalone rendering.
 
+## Final mobile polish
+
+- Mobile header is 57px high with a 21px brand wordmark; search, cart and menu controls retain 44px touch targets and aligned centers.
+- A ResizeObserver measures the sticky header for native scroll padding. Heading/target scroll margins and the skip-link handler keep navigation landings clear of the header, including after closing the mobile menu.
+- Product cards share image/name/size/notes/price/action rows in browsers supporting CSS subgrid; flexible fallback cards keep purchase controls at the bottom. Text wraps naturally, 48px CTAs remain uncut, and row gaps do not add trailing padding after the grid.
+- Reduced mobile section/collection transition spacing and tightened discovery headline, copy, specifications, action and visual gaps. The 4 × 10 ml content, imagery, palette and large discovery CTA are retained.
+- `tests/browser-final-polish.py` checks 390, 430, 768 and 1440px: sticky positioning, native heading scrolling, skip/route/Back navigation, equal card heights/field alignment, price/CTA bounds, touch targets, RTL and horizontal overflow. It also checks the exact originless standalone preview with zero requests. Run it with the local storefront on port 4173; no preview server is needed for this suite.
+- Existing accessibility, shopping-flow and responsive/standalone suites were rerun, along with lint, four automated tests, build and preview generation. No production connection, deployment or merge occurred.
+
 ## Accessibility basics
 
 Arabic document language and RTL direction; skip link; landmark navigation; labeled search, sort, price-filter and quantity controls; descriptive product actions; visible focus outlines; native FAQ details; modal cart dialog with Escape and native focus containment/restoration; live cart feedback; text alongside icon-only controls; reduced-motion CSS. Product gallery thumbnails expose pressed state. Cart quantity updates/removal restore focus to an available control instead of leaving focus on a removed element.

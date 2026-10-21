@@ -6,6 +6,7 @@
   --muted: #50585e;
   --line: #e1ddd4;
   --white: #fffdf9;
+  --header-height: 94px;
   font-family: Tahoma, Arial, sans-serif;
   color: var(--ink);
   background: var(--white);
@@ -13,6 +14,9 @@
   line-height: 1.85;
 }
 * { box-sizing: border-box; }
+/* The measured sticky header also protects native anchors and focused controls. */
+html { scroll-padding-block-start: calc(var(--header-height) + 8px); }
+main, [id], h1, h2, h3, summary, button, input, select { scroll-margin-block-start: 8px; }
 body { margin: 0; }
 a { color: inherit; text-decoration: none; }
 button, input, select { font: inherit; }
@@ -73,7 +77,8 @@ p { margin-bottom: 1rem; }
 .benefits span:last-child { border: 0; }
 .benefits b { font-size: .73rem; font-weight: 400; color: #51575a; }
 .section-heading { display: flex; align-items: end; justify-content: space-between; gap: 22px; margin-bottom: 30px; }
-.section-heading h2 { margin: 0; }
+.section-heading > div { min-inline-size: 0; }
+.section-heading h2 { margin: 0; text-wrap: balance; }
 .text-link { font-size: .78rem; border: 0; background: none; border-bottom: 1px solid #b7a786; padding: 6px 0; display: inline-flex; gap: 22px; align-items: center; }
 .text-link:hover { color: #7c5f30; }
 .section-note { font-size: .75rem; color: var(--muted); margin: -12px 0 28px; }
@@ -91,6 +96,7 @@ p { margin-bottom: 1rem; }
 .category-number { position: absolute; inset-inline-start: 18px; top: 16px; font-family: Georgia, serif; font-size: 8px; letter-spacing: 1px; color: #666b63; }
 .product-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 26px; }
 .product-grid--pair { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.product-card { display: flex; flex-direction: column; min-inline-size: 0; }
 .product-art { display: block; position: relative; overflow: hidden; aspect-ratio: 4/4.7; }
 .product-art img { width: 100%; height: 100%; object-fit: contain; transition: transform .3s; }
 .product-art:hover img { transform: scale(1.035); }
@@ -98,16 +104,22 @@ p { margin-bottom: 1rem; }
 .product-art.sage img, .category-card.sage img { filter: hue-rotate(40deg) saturate(.45); }
 .badge { position: absolute; top: 15px; inset-inline-start: 15px; background: #fffdf9; padding: 3px 9px; font-size: .62rem; color: #5f5139; }
 .art-caption { position: absolute; bottom: 15px; width: 100%; text-align: center; font-size: 8px; letter-spacing: 2px; font-family: Georgia, serif; color: #686155; }
-.product-info { padding: 16px 0 0; }
+.product-info { padding: 16px 0 0; display: flex; flex-direction: column; flex: 1; min-inline-size: 0; }
 .product-meta { display: flex; align-items: center; justify-content: space-between; gap: 7px; font-size: .75rem; color: var(--muted); margin-bottom: 7px; }
 .demo-tag { display: inline-flex; align-items: center; border: 1px solid #d6cdbb; color: #746344; padding: 2px 8px; font-size: .59rem; letter-spacing: 0; line-height: 1.8; }
 .product-info h3 { margin-bottom: 5px; font-weight: 600; }
 .notes { font-size: .78rem; color: var(--muted); margin-bottom: 12px; }
-.price-row { display: flex; align-items: center; gap: 12px; font-size: 1rem; font-weight: 600; margin-bottom: 14px; }
+.price-row { display: flex; align-items: center; gap: 12px; font-size: 1rem; font-weight: 600; margin-bottom: 14px; margin-block-start: auto; }
 .price-row del, .detail-price del { color: #62696e; font-size: .8rem; font-weight: 400; }
 .quick-add { display: flex; align-items: center; justify-content: space-between; gap: 12px; width: 100%; min-height: 48px; padding: 10px 15px; border: 1px solid var(--ink); background: var(--ink); color: var(--white); font-size: .82rem; transition: background .18s, border-color .18s; }
 .quick-add > span:last-child { font-size: 20px; line-height: 1; }
 .quick-add:hover { background: #35414c; border-color: #35414c; }
+@supports (grid-template-rows: subgrid) {
+  .product-card { display: grid; grid-row: span 6; grid-template-rows: subgrid; row-gap: 0; }
+  .product-info { display: grid; grid-row: span 5; grid-template-rows: subgrid; row-gap: 0; }
+  .price-row { margin-block-start: 0; }
+  .quick-add { align-self: end; }
+}
 .demo-label { font-size: .68rem; color: #6d6a61; line-height: 1.9; }
 .demo-note { font-size: .77rem; background: var(--soft); padding: 13px 18px; border-inline-start: 2px solid var(--gold); }
 .discovery { background: #ece7dd; }
@@ -287,9 +299,9 @@ main:focus { outline: 0; }
   .container { width: calc(100% - 36px); }
   .announcement { font-size: .62rem; padding-block: 7px; }
   .preview-notice { font-size: .6rem; padding: 5px 12px; }
-  .header-inner { padding: 8px 16px; gap: 12px; }
-  .brand { font-size: 23px; }
-  .brand small { font-size: 7px; }
+  .header-inner { padding: 6px 16px; gap: 12px; }
+  .header .brand { font-size: 21px; min-block-size: 44px; justify-content: center; }
+  .header .brand small { font-size: 7px; margin-top: 5px; }
   .header-actions { gap: 3px; }
   .hero { height: 390px; }
   .hero picture img { object-position: center bottom; }
@@ -306,8 +318,8 @@ main:focus { outline: 0; }
   .benefits { gap: 9px 8px; padding-block: 14px; }
   .benefits span { gap: 9px; font-size: 20px; justify-content: start; padding-inline-start: 6px; }
   .benefits b { font-size: .7rem; }
-  .section { padding-block: 30px; }
-  .section-heading { gap: 10px; margin-bottom: 18px; align-items: end; }
+  .section { padding-block: 26px; }
+  .section-heading { gap: 10px; margin-bottom: 16px; align-items: end; }
   .section-heading h2 { font-size: 1.5rem; }
   .eyebrow { font-size: .6rem; margin-bottom: 8px; }
   .text-link { font-size: .75rem; gap: 8px; min-height: 44px; white-space: nowrap; }
@@ -318,7 +330,7 @@ main:focus { outline: 0; }
   .category-card p { font-size: .58rem; min-height: 35px; }
   .category-card h3 { font-size: .84rem; }
   .category-number { top: 11px; inset-inline-start: 12px; font-size: 7px; letter-spacing: .4px; }
-  .product-grid { gap: 26px 14px; }
+  .product-grid { column-gap: 14px; }
   .product-art { aspect-ratio: 4/5; }
   .badge { font-size: .53rem; top: 9px; inset-inline-start: 9px; padding: 2px 6px; }
   .art-caption { font-size: 6px; letter-spacing: 1px; bottom: 9px; }
@@ -332,22 +344,23 @@ main:focus { outline: 0; }
   .quick-add { min-height: 48px; padding: 10px; font-size: .82rem; }
   .quick-add > span:last-child { font-size: 19px; }
   .demo-label { font-size: .62rem; }
-  .discovery-inner { grid-template-columns: 1fr; gap: 22px; padding-block: 28px; }
+  .discovery-inner { grid-template-columns: 1fr; gap: 14px; padding-block: 24px; }
   .discovery-art { grid-column: auto; grid-row: auto; min-height: 250px; max-height: 260px; }
   .discovery-art img { height: 260px; object-fit: contain; }
   .discovery-art > span:first-of-type { font-size: 8px; left: 16px; top: 16px; }
   .pack-stamp { right: 16px; bottom: 16px; font-size: 11px; padding: 5px 10px; }
   .discovery-copy { grid-column: auto; grid-row: auto; padding: 0 6px; }
   .discovery-copy .button { width: 100%; min-height: 52px; font-size: .9rem; }
-  .discovery-copy h2 { font-size: 1.9rem; margin-bottom: 13px; }
-  .discovery-copy > p:not(.eyebrow):not(.demo-label) { font-size: .88rem; line-height: 1.9; }
-  .discovery-details { margin: 14px 0 19px; gap: 35px; }
+  .discovery-copy h2 { font-size: 1.9rem; margin-bottom: 10px; text-wrap: balance; }
+  .discovery-copy > p:not(.eyebrow):not(.demo-label) { font-size: .88rem; line-height: 1.9; margin-bottom: 12px; }
+  .discovery-copy .demo-label { margin-top: 10px; }
+  .discovery-details { margin: 12px 0 16px; gap: 35px; }
   .discovery-details small { font-size: .75rem; }
   .discovery-details > span { font-size: 1.1rem; }
-  .collection-showcase { gap: 20px; }
-  .collection-story { padding: 24px; display: flex; gap: 0; }
+  .collection-showcase { gap: 16px; }
+  .collection-story { padding: 22px; display: flex; gap: 0; }
   .collection-story h3 { font-size: 1.55rem; margin: 7px 0 12px; max-width: 230px; }
-  .collection-story > p:not(.eyebrow) { font-size: .85rem; margin-bottom: 15px; max-width: 270px; }
+  .collection-story > p:not(.eyebrow) { font-size: .85rem; margin-bottom: 12px; max-width: 270px; }
   .story-mark { font-size: 165px; bottom: -35px; }
   .why { grid-template-columns: 1fr; gap: 20px; }
   .why h2 { font-size: 1.8rem; }
