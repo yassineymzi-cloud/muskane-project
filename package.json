@@ -1,0 +1,15 @@
+{
+  "name": "muskane-parfum",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node scripts/serve.mjs",
+    "build": "node scripts/build.mjs",
+    "lint": "node scripts/check.mjs",
+    "test": "node tests/commerce.test.js"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
