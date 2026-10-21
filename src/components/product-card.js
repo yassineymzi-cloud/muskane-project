@@ -7,8 +7,8 @@ export function productCard(p) {
       <span class="art-caption" lang="en" dir="ltr">${p.latin}</span>
     </a>
     <div class="product-info">
-      <div class="product-meta"><span>${p.size}</span><span class="demo-tag">نموذج توضيحي</span></div>
       <h3><a href="#/product/${p.id}">${p.name}</a></h3>
+      <div class="product-meta"><span>الحجم: <bdi>${p.size}</bdi></span></div>
       <p class="notes">${p.notes}</p>
       <div class="price-row"><bdi dir="ltr">${money(p.price)}</bdi>${p.oldPrice ? `<del aria-label="السعر السابق التوضيحي"><bdi dir="ltr">${money(p.oldPrice)}</bdi></del>` : ''}</div>
       <button class="quick-add" data-add="${p.id}" aria-label="أضف ${p.name} إلى السلة التجريبية"><span>أضف إلى السلة</span><span aria-hidden="true">+</span></button>

@@ -60,7 +60,7 @@ Edit copy in view functions in `src/app.js`; shared navigation and footer live i
 
 Set `whatsappNumber` to verified international digits (without `+`) to reveal the optional floating link. Empty configuration hides it. Set only public `contactEmail` and verified HTTPS social links; never add secrets. Contact and policy copy are placeholders until the store owner supplies approved details.
 
-All product names, notes, sizes, prices, old prices and discounts are fictional, explicitly labeled demo data. The four-by-10 ml pack is a presentation concept, not a real Muskane offer. Prices display in Moroccan dirhams as DH; the configured currency code remains MAD.
+All product names, notes, sizes, prices, old prices and discounts are fictional demo data isolated in `src/data/products.js`. The preview notice and section descriptions disclose this without repeating demo badges on individual product cards. The four-by-10 ml pack is a presentation concept, not a real Muskane offer. Prices display in Moroccan dirhams as DH; the configured currency code remains MAD.
 
 Demo cart entries persist in localStorage under `muskane-demo-cart`. They are not orders, contain no customer data and can be cleared from the cart or browser. Browser storage failure falls back to memory.
 

@@ -34,7 +34,25 @@ with sync_playwright() as p:
  page.goto('http://127.0.0.1:4173/')
  page.screenshot(path='work/polished-mobile-top.png')
  page.screenshot(path='work/polished-mobile.png',full_page=True)
- assert page.locator('.quick-add').first.bounding_box()['height']>=44
+ assert page.locator('.quick-add').first.bounding_box()['height']>=48
+ assert page.locator('.product-card .demo-tag').count()==0
+ assert page.locator('.preview-notice').is_visible()
+ assert page.locator('.hero').bounding_box()['height']<=400
+ assert page.locator('.header').bounding_box()['height']<=66
+ hero_cta=page.locator('.hero .button').bounding_box()
+ first_product=page.locator('.featured-section .product-art').first.bounding_box()
+ assert hero_cta['y']+hero_cta['height']<600
+ assert first_product['y']<844,first_product
+ assert page.locator('.featured-section').evaluate('(e)=>e.nextElementSibling.classList.contains("home-categories")')
+ assert page.locator('.discovery-copy .button').bounding_box()['height']>=50
+ for selector in ['.header .brand','.header-actions [aria-label="البحث"]','.cart-toggle','.menu-toggle']:
+  box=page.locator(selector).bounding_box()
+  assert box and box['x']>=0 and box['x']+box['width']<=390
+ # Live device switches preserve logical reading order and desktop placement.
+ page.set_viewport_size({'width':768,'height':1000})
+ assert page.locator('.home-categories').evaluate('(e)=>e.nextElementSibling.classList.contains("featured-section")')
+ page.set_viewport_size({'width':390,'height':844})
+ assert page.locator('.featured-section').evaluate('(e)=>e.nextElementSibling.classList.contains("home-categories")')
  page.goto('http://127.0.0.1:4173/#/collection/women-packs')
  page.locator('#collection-results[aria-busy="false"]').wait_for()
  page.screenshot(path='work/polished-mobile-collection.png',full_page=True)
@@ -86,6 +104,6 @@ with sync_playwright() as p:
  assert not offline_requests,offline_requests
  assert not errors,errors
  assert not bad,bad
- results+=['Demo labels, four-vial pack data, collection active states and 44px card CTA passed','Standalone preview rendered Desktop/Tablet/Mobile, all assets, collection navigation and demo cart with no external requests','Originless artifact rendering, product navigation, cart storage fallback and Back history passed without requests','No browser JavaScript errors or failed asset responses']
+ results+=['Preview disclosure, clean product cards, shorter hero/header, first-viewport product imagery, four-vial pack data and 48px card CTA passed','Standalone preview rendered Desktop/Tablet/Mobile, all assets, collection navigation and demo cart with no external requests','Originless artifact rendering, product navigation, cart storage fallback and Back history passed without requests','No browser JavaScript errors or failed asset responses']
  print(json.dumps(results,ensure_ascii=False,indent=2))
  browser.close()

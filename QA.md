@@ -14,12 +14,12 @@
 
 These results describe the initial storefront baseline. The current polish pass must rerun relevant checks before its commit; do not treat the historical list as evidence for changed layouts or the regenerated preview.
 
-## Current polish pass
+## Previous polish pass
 
 - `npm run lint`, `npm test` (three cart tests and one preview-generation test), `npm run build`, and `npm run preview` passed.
 - Chromium checks at 360, 390, 768, 1024 and 1440px covered the homepage, all four collection routes, a sample-pack product and search, with no horizontal overflow.
 - Existing shopping-flow and keyboard suites passed: filters, sort, empty states, Arabic search/injection input, gallery, cart quantity/remove/persistence, mobile menu, FAQ, skip link and modal focus restoration. All 16 homepage destinations resolved.
-- Visual screenshots reviewed for desktop and mobile: ivory/charcoal hero, demo-labelled product cards, four-vial pack art, collection introductions and the review placeholder. Card add buttons are at least 44px high at 390px.
+- Visual screenshots reviewed for desktop and mobile: ivory/charcoal hero, product cards with preview disclosure, four-vial pack art, collection introductions and the review placeholder. Card add buttons are at least 44px high at 390px.
 - The standalone artifact rendered in Desktop, Tablet (768px) and Mobile (390px) modes. Embedded assets, collection navigation and demo cart passed without external requests; checkout remained disabled.
 - Fixed embedded fragment navigation so it stays inside `about:srcdoc`; fixed the source skip link so it preserves the storefront route. A regression assertion checks the homepage survives skip-link activation.
 - Exact artifact bytes also rendered in an originless document with zero requests, including collection/product navigation, Back history and the in-memory cart fallback. Direct `file://` navigation is blocked by the managed browser policy, so that exact launch path was not exercised here.
@@ -28,6 +28,16 @@ These results describe the initial storefront baseline. The current polish pass 
 
 
 The optional reproducible browser scenarios are `tests/browser-qa.py`, `tests/browser-accessibility.py` and `tests/browser-polish.py`. They require Python Playwright and an already installed `/usr/bin/chromium`, with `npm run dev` running first. They are separate from the dependency-free `npm test` and write ignored screenshots under `work/`; create that directory first. Browser installations/permissions vary by machine. The polish scenario additionally expects `python3 -m http.server 4174 --bind 127.0.0.1 --directory previews`; set `PREVIEW_URL` if its URL differs.
+
+## Mobile usability refinement
+
+- Preserved the ivory/charcoal design. Mobile hero reduced from 570px to 390px; header padding reduced while retaining 44px icon targets.
+- Featured products move ahead of categories at 640px and below through actual DOM positioning; desktop order restores when resizing. At 390 × 844 the first product imagery begins within the initial viewport.
+- Product names, sizes, prices and sale prices are larger and darker. Product card demo badges were removed; global/section disclosures, separate demo data and honest review placeholders remain.
+- Card add buttons are charcoal with at least 48px height. Discovery content precedes artwork on mobile and its full-width CTA is at least 52px high.
+- Text contrast measured from CSS colors: secondary body on ivory 7.13:1, struck prices on ivory 5.49:1, primary button text 14.49:1. These checks do not establish full accessibility conformance.
+- Existing keyboard and shopping suites rerun successfully. Updated responsive tests cover first-viewport imagery, compact header, visible controls, mobile/desktop ordering after resize, no card demo badges, retained preview notice and the standalone preview.
+- Lint, four automated tests, static build and preview generation rerun; final browser checks cover 360, 390, 768, 1024 and 1440px, navigation, cart and originless standalone rendering.
 
 ## Accessibility basics
 
