@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f5ef">
+  <meta name="description" content="اكتشف مجموعة MUSKANE PARFUM من العطور الرجالية والنسائية وباكات العطور، بأسعار بالدرهم المغربي.">
+  <title>MUSKANE PARFUM — عطرك… بصمتك</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23262825'/%3E%3Ctext x='32' y='45' fill='%23f7f5ef' text-anchor='middle' font-family='serif' font-size='44'%3EM%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#main">انتقل إلى المحتوى</a>
+  <div class="announcement">MUSKANE PARFUM <span>·</span> تشكيلة عطور، لكل بصمة</div>
+  <header class="header">
+    <div class="header-inner">
+      <button class="icon-button menu-toggle" aria-label="فتح القائمة" aria-expanded="false" aria-controls="navigation" data-action="menu"><svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+      <a class="brand" href="#/" aria-label="MUSKANE PARFUM الرئيسية"><strong>MUSKANE</strong><span>P A R F U M</span></a>
+      <nav id="navigation" aria-label="التنقل الرئيسي"><a href="#/">الرئيسية</a><a href="#/collection/parfum-homme">عطور رجالية</a><a href="#/collection/parfum-femme">عطور نسائية</a><a href="#/collection/packs-homme">الباكات</a></nav>
+      <div class="header-actions"><button class="icon-button" data-action="search" aria-label="البحث عن عطر"><svg viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg></button><button class="icon-button cart-toggle" data-action="cart" aria-label="فتح سلة المعاينة"><svg viewBox="0 0 24 24"><path d="M5 7h14l1 14H4L5 7ZM9 8V6a3 3 0 0 1 6 0v2"/></svg><span id="cart-count">0</span></button></div>
+    </div>
+  </header>
+  <main id="main" tabindex="-1"><div class="loading">نحمّل المجموعة…</div></main>
+  <footer id="footer"></footer>
+  <dialog id="search-dialog" aria-labelledby="search-title"><div class="dialog-top"><h2 id="search-title">ابحث عن بصمتك</h2><button class="icon-button" data-close="search-dialog" aria-label="إغلاق البحث">×</button></div><label for="search-input">اسم العطر</label><input id="search-input" type="search" placeholder="ابحث باسم العطر…" autocomplete="off"><p id="search-status" class="muted" aria-live="polite"></p><div id="search-results"></div></dialog>
+  <dialog id="cart-dialog" aria-labelledby="cart-title"><div class="dialog-top"><h2 id="cart-title">سلة المعاينة</h2><button class="icon-button" data-close="cart-dialog" aria-label="إغلاق السلة">×</button></div><p class="preview-note">هذه سلة للمعاينة فقط. لا ترسل طلبات ولا تجمع بيانات دفع.</p><div id="cart-items"></div><div id="cart-total"></div></dialog>
+  <div id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
