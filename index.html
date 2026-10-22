@@ -35,9 +35,11 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .brand strong{font: 30px/1.1 var(--serif); letter-spacing: 4px;}
 .brand span{font: 9px Arial; letter-spacing: 3px; margin-top: 7px;}
 .header nav{display: flex; gap: 32px; font-size: 15px;}
-.header nav a{color: #000; display: flex; align-items: center; min-height: 44px; position: relative;}
-.header nav a:hover{color: #000;}
-.header nav a[aria-current="page"]::after{content: ""; height: 1px; background: var(--gold); position: absolute; bottom: 3px; inset-inline: 0px;}
+.header nav a{color: #000; display: flex; align-items: center; min-height: 44px; position: relative; transition: transform .2s ease; }
+.header nav a:hover, .header nav a:focus-visible{color: #000; transform: translateY(-2px);}
+.header nav a::after{content: ""; height: 2px; background: #000; position: absolute; bottom: 3px; inset-inline: 0px; transform: scaleX(0); transform-origin: right center; transition: transform .25s ease;}
+.header nav a:hover::after, .header nav a:focus-visible::after, .header nav a[aria-current="page"]::after{transform: scaleX(1);}
+@media(prefers-reduced-motion:reduce){.header nav a, .header nav a::after{transition:none;}.header nav a:hover, .header nav a:focus-visible{transform:none;}}
 .header-actions{display: flex; gap: 8px;}
 .header-actions .icon-button{color: #000;}
 .header-actions .icon-button svg{width: 26px; height: 26px;}
