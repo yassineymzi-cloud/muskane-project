@@ -2,7 +2,7 @@
 const collections = [
   {slug:'parfum-homme', name:'عطور رجالية', label:'FOR HIM', text:'حضور يعكس أسلوبك.'},
   {slug:'parfum-femme', name:'عطور نسائية', label:'FOR HER', text:'تفاصيل تعبّر عنك.'},
-  {slug:'packs-homme', name:'باكات رجالية', label:'PACK FOR HIM', text:'اكتشف أكثر من بصمة.'},
+  {slug:'packs-homme', name:'باكات رجالية', label:'PACK FOR HIM', text:'أربع عطور، أربع بصمات.'},
   {slug:'packs-femme', name:'باكات نسائية', label:'PACK FOR HER', text:'أربع عطور، أربع بصمات.'}
 ];
 
