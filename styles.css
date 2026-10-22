@@ -25,6 +25,8 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .header nav a:hover{color: #000;}
 .header nav a[aria-current="page"]::after{content: ""; height: 1px; background: var(--gold); position: absolute; bottom: 3px; inset-inline: 0px;}
 .header-actions{display: flex; gap: 8px;}
+.header-actions .icon-button{color: #000;}
+.header-actions .icon-button svg{width: 26px; height: 26px;}
 .icon-button{display: inline-flex; align-items: center; justify-content: center; min-width: 44px; min-height: 44px; border: 0px; background: transparent; font-size: 28px; line-height: 1;}
 .cart-toggle{position: relative;}
 .cart-toggle span{position: absolute; top: 0px; right: 0px; border-radius: 50%; background: var(--ink); color: white; min-width: 17px; height: 17px; display: grid; place-items: center; font: 10px Arial;}
