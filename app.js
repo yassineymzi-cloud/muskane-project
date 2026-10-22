@@ -101,7 +101,11 @@ function updateCart(){
 }
 let toastTimer;function toast(t){$('#toast').textContent=t;$('#toast').classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>$('#toast').classList.remove('show'),2500);}
 function search(){const q=$('#search-input').value.trim().toLocaleLowerCase();const found=q?products.filter(p=>p.name.toLocaleLowerCase().includes(q)||p.categories.some(c=>c.name.includes(q))):[];$('#search-status').textContent=q?`${found.length} نتائج`:'اكتب اسم العطر أو الفئة';$('#search-results').innerHTML=found.map(p=>`<a class="search-row" href="${productLink(p)}" data-close="search-dialog">${image(p)}<div class="row-info"><h3>${esc(p.name)}</h3>${price(p.price)}</div><span aria-hidden="true">←</span></a>`).join('');}
+function closePacksMenu(){ $('#packs-options').hidden=true;$('#packs-trigger').setAttribute('aria-expanded','false');}
 document.addEventListener('click',e=>{
+  if(e.target.closest('#packs-trigger')){e.preventDefault();const open=$('#packs-options').hidden;$('#packs-options').hidden=!open;$('#packs-trigger').setAttribute('aria-expanded',String(open));}
+  else if(!e.target.closest('.packs-menu') || e.target.closest('#packs-options a'))closePacksMenu();
+
   const close=e.target.closest('[data-close]');if(close)$('#'+close.dataset.close).close();
   const action=e.target.closest('[data-action]')?.dataset.action;
   if(action==='menu'){const open=$('#navigation').classList.toggle('open');$('.menu-toggle').setAttribute('aria-expanded',String(open));}
@@ -112,7 +116,7 @@ document.addEventListener('click',e=>{
   const remove=e.target.closest('[data-remove]');if(remove){cart=cart.filter(c=>c.id!==remove.dataset.remove);saveCart();}
   const thumb=e.target.closest('[data-image]');if(thumb){const p=products.find(p=>p.id===thumb.dataset.product);$('#main-image').innerHTML=image(p,true,Number(thumb.dataset.image));}
 });
-document.addEventListener('keydown',e=>{if(e.key==='Escape'){$('#navigation').classList.remove('open');$('.menu-toggle').setAttribute('aria-expanded','false');}});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){closePacksMenu();$('#navigation').classList.remove('open');$('.menu-toggle').setAttribute('aria-expanded','false');}});
 $('#search-input').addEventListener('input',search);
 document.addEventListener('change',e=>{if(e.target.id==='sort'){const slug=$('#collection-grid').dataset.collection;const items=productsForCollection(slug);if(e.target.value==='asc')items.sort((a,b)=>a.price-b.price);if(e.target.value==='desc')items.sort((a,b)=>b.price-a.price);if(e.target.value==='name')items.sort((a,b)=>a.name.localeCompare(b.name));$('#collection-grid').innerHTML=items.map(card).join('');}});
 window.addEventListener('hashchange',route);
