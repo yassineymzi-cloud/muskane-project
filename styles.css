@@ -85,6 +85,8 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .product-info h3 a, .product-info .price small{color: #000;}
 .card-actions{display: flex; gap: 8px; margin-top: auto; padding-top: 16px;}
 .card-actions .button{flex: 1 1 0%; min-width: 0px; min-height: 44px; padding: 9px 8px; font-size: 12px; gap: 14px;}
+.card-actions .buy-button{background: #000; border-color: #000; color: #fff; transition: background-color .2s ease, color .2s ease, border-color .2s ease;}
+.card-actions .buy-button:hover, .card-actions .buy-button:focus-visible{background: #fff; border-color: #000; color: #000;}
 .card-actions .add{flex: 0 0 44px; background: transparent; border-color: var(--line); color: var(--ink); font-size: 21px;}
 .card-actions .add:hover{background: var(--cream); border-color: var(--gold);}
 .image-fallback{position: absolute; inset: 0px; display: flex; align-items: center; justify-content: center; flex-direction: column; text-align: center; padding: 18px; background: rgb(246, 243, 236); color: rgb(109, 102, 88);}
