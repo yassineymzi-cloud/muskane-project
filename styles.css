@@ -120,7 +120,7 @@ footer{margin-top: 28px; background: #000; color: rgb(243, 238, 227);}
 .footer-inner{display: grid; grid-template-columns: 1.2fr 0.85fr 1.5fr 0.75fr; gap: 32px; padding-block: 36px;}
 .footer-brand .brand{align-items: flex-start;}
 .footer-brand p{font-size: 12px; color: rgb(194, 195, 185); line-height: 2; margin-top: 17px; max-width: 270px;}
-.footer-links h2{font-size: 14px; color: rgb(243, 238, 227); margin-bottom: 12px;}
+.footer-links h2{font-size: 14px; color: #c9aa65; margin-bottom: 12px;}
 .footer-links a{display: block; width: fit-content; color: rgb(200, 201, 191); font-size: 12px; padding-block: 5px; overflow-wrap: anywhere;}
 .footer-links a:hover{color: rgb(229, 205, 161); text-decoration: underline; text-underline-offset: 4px;}
 .policy-grid{display: grid; grid-template-columns: 1fr 1fr; gap: 0px 18px;}
