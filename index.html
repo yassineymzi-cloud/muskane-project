@@ -1032,6 +1032,7 @@ const $ = s => document.querySelector(s);
 const esc = s => String(s ?? '').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const price = n => `<span class="price">${new Intl.NumberFormat('en-US').format(n)} <small>DH</small></span>`;
 const inCollection = (p, slug) => p.categories.some(c=>slug==='packs'?c.slug.startsWith('packs-'):c.slug===slug);
+const productsForCollection = slug => products.filter(p=>slug==='all'?!inCollection(p,'packs'):inCollection(p,slug));
 const productLink = p => `#/product/${p.slug}`;
 const productCount = n => n===1?'منتج واحد':n===2?'منتجان':`${n} ${n<=10?'منتجات':'منتجاً'}`;
 function image(p, eager=false, index=0) {
@@ -1062,7 +1063,7 @@ function homepage() {
 }
 function collectionPage(slug) {
   const c=collections.find(c=>c.slug===slug) || {name:slug==='all'?'جميع العطور':slug==='packs'?'باكات العطور':'المجموعة',label:'THE PERFUME EDIT'};
-  const items=slug==='all'?products:products.filter(p=>inCollection(p,slug));
+  const items=productsForCollection(slug);
   return `<div class="wrap"><div class="breadcrumb"><a href="#/">الرئيسية</a><span>/</span><span>${c.name}</span></div><section class="collection-heading"><span class="eyebrow">${c.label}</span><h1>${c.name}</h1><p>اختر العطر الذي يعبّر عنك من مجموعة MUSKANE PARFUM.</p><nav class="collection-tabs" aria-label="مجموعات العطور"><a class="${slug==='all'?'active':''}" href="#/collection/all">الكل</a>${collections.map(c=>`<a class="${slug===c.slug?'active':''}" href="#/collection/${c.slug}">${c.name}</a>`).join('')}</nav></section><div class="collection-toolbar"><span>${productCount(items.length)}</span><label>الترتيب: <select id="sort"><option value="original">ترتيب المجموعة</option><option value="asc">السعر: من الأقل</option><option value="desc">السعر: من الأعلى</option><option value="name">الاسم</option></select></label></div><div id="collection-grid" class="product-grid" data-collection="${esc(slug)}">${items.map(card).join('')}</div>${items.length?'':'<p class="empty">لا توجد منتجات موثقة في هذه المجموعة حالياً.</p>'}</div>`;
 }
 function safeDescription(html) {
@@ -1120,7 +1121,7 @@ document.addEventListener('click',e=>{
 });
 document.addEventListener('keydown',e=>{if(e.key==='Escape'){$('#navigation').classList.remove('open');$('.menu-toggle').setAttribute('aria-expanded','false');}});
 $('#search-input').addEventListener('input',search);
-document.addEventListener('change',e=>{if(e.target.id==='sort'){const slug=$('#collection-grid').dataset.collection;const items=(slug==='all'?[...products]:products.filter(p=>inCollection(p,slug)));if(e.target.value==='asc')items.sort((a,b)=>a.price-b.price);if(e.target.value==='desc')items.sort((a,b)=>b.price-a.price);if(e.target.value==='name')items.sort((a,b)=>a.name.localeCompare(b.name));$('#collection-grid').innerHTML=items.map(card).join('');}});
+document.addEventListener('change',e=>{if(e.target.id==='sort'){const slug=$('#collection-grid').dataset.collection;const items=productsForCollection(slug);if(e.target.value==='asc')items.sort((a,b)=>a.price-b.price);if(e.target.value==='desc')items.sort((a,b)=>b.price-a.price);if(e.target.value==='name')items.sort((a,b)=>a.name.localeCompare(b.name));$('#collection-grid').innerHTML=items.map(card).join('');}});
 window.addEventListener('hashchange',route);
 Promise.resolve().then(()=>JSON.parse($('#muskane-catalog').textContent)).then(data=>{if(!data || !Array.isArray(data.products))throw Error('Missing catalog');catalog=data;products=data.products;cart=cart.filter(c=>c && products.some(p=>p.id===c.id) && Number.isInteger(c.qty) && c.qty>0 && c.qty<=99);footer();updateCart();route();
   // Dynamic loading keeps optional remote font CSS from blocking the inline app.
