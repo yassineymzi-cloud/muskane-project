@@ -449,9 +449,9 @@ h1, h2, h3{font-weight: 500;}
 
 
 /* Homepage Hero: one component, no inherited slider layers. */
-.muskane-hero{--muskane-hero-bg:#e9e3d6;width:calc(100% - 48px);max-width:1440px;margin:20px auto 0;height:clamp(320px,30vw,420px);min-height:320px;max-height:420px;position:relative;overflow:hidden;border-radius:16px;display:grid;grid-template-columns:minmax(0,57fr) minmax(0,43fr);direction:ltr;background:var(--muskane-hero-bg)}
+.muskane-hero{--muskane-hero-bg:#f8f1e5;width:calc(100% - 48px);max-width:1440px;margin:20px auto 0;height:clamp(320px,30vw,420px);min-height:320px;max-height:420px;position:relative;overflow:hidden;border-radius:16px;display:grid;grid-template-columns:minmax(0,57fr) minmax(0,43fr);direction:ltr;background:var(--muskane-hero-bg)}
 .muskane-hero__visual{position:relative;min-width:0;min-height:0;height:100%;background:var(--muskane-hero-bg)}
-.muskane-hero__visual::before{content:"";position:absolute;z-index:1;top:0;right:0;bottom:0;width:clamp(32px,5vw,80px);background:linear-gradient(to right,transparent,var(--muskane-hero-bg));pointer-events:none}
+.muskane-hero__visual::before{content:"";position:absolute;z-index:1;top:0;right:0;bottom:0;width:clamp(14px,2vw,24px);background:linear-gradient(to right,#f8f1e500 0%,#f8f1e533 45%,var(--muskane-hero-bg) 100%);pointer-events:none}
 .muskane-hero__visual picture{display:block;width:100%;height:100%}
 .muskane-hero__visual img{display:block;width:100%;height:100%;object-fit:cover;object-position:left center}
 .muskane-hero__visual img[hidden]{display:none}
@@ -468,7 +468,7 @@ h1, h2, h3{font-weight: 500;}
  .muskane-hero{width:calc(100% - 24px);height:auto;min-height:0;max-height:none;margin-top:12px;display:flex;flex-direction:column;border-radius:16px}
  .muskane-hero__visual{flex:none;height:clamp(150px,38vw,190px);width:100%}
  .muskane-hero__visual img{object-position:center}
- .muskane-hero__visual::before{top:auto;left:0;right:0;bottom:0;width:100%;height:36px;background:linear-gradient(to bottom,transparent,var(--muskane-hero-bg))}
+ .muskane-hero__visual::before{top:auto;left:0;right:0;bottom:0;width:100%;height:16px;background:linear-gradient(to bottom,#f8f1e500 0%,#f8f1e533 45%,var(--muskane-hero-bg) 100%)}
  .muskane-hero__content{flex:1;min-width:0;padding:20px 24px 24px;gap:10px;position:static;overflow:visible}
  .muskane-hero__brand{font-size:9px;letter-spacing:1.8px}
  .muskane-hero__title{font-size:clamp(32px,9vw,46px);line-height:1.3;letter-spacing:0}
