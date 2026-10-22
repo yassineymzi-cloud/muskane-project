@@ -35,9 +35,12 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .brand strong{font: 30px/1.1 var(--serif); letter-spacing: 4px;}
 .brand span{font: 9px Arial; letter-spacing: 3px; margin-top: 7px;}
 .header nav{display: flex; gap: 32px; font-size: 15px;}
-.header nav a{color: #000; display: flex; align-items: center; min-height: 44px; position: relative; transition: transform .2s ease; }
-.header nav a:hover, .header nav a:focus-visible{color: #000; transform: translateY(-2px);}
-.header nav a::after{content: ""; height: 2px; background: #000; position: absolute; bottom: 3px; inset-inline: 0px; transform: scaleX(0); transform-origin: right center; transition: transform .25s ease;}
+.header nav a{color: #000; display: flex; align-items: center; min-height: 44px; position: relative; --nav-accent: #000; --nav-line: var(--nav-accent); transition: transform .2s ease, color .2s ease; }
+.header nav a[href="#/collection/parfum-homme"]{--nav-accent:#5198d0;}
+.header nav a[href="#/collection/parfum-femme"]{--nav-accent:#f0bbc9;}
+.header nav a[href="#/collection/packs"]{--nav-accent:#adb497;--nav-line:linear-gradient(to right,#adb497,#e6d0b4);}
+.header nav a:hover, .header nav a:focus-visible{color: var(--nav-accent); transform: translateY(-2px);}
+.header nav a::after{content: ""; height: 2px; background: var(--nav-line); position: absolute; bottom: 3px; inset-inline: 0px; transform: scaleX(0); transform-origin: right center; transition: transform .25s ease;}
 .header nav a:hover::after, .header nav a:focus-visible::after, .header nav a[aria-current="page"]::after{transform: scaleX(1);}
 @media(prefers-reduced-motion:reduce){.header nav a, .header nav a::after{transition:none;}.header nav a:hover, .header nav a:focus-visible{transform:none;}}
 .header-actions{display: flex; gap: 8px;}
