@@ -4,9 +4,9 @@ Arabic RTL, mobile-first perfume storefront. Buildless HTML, CSS and JavaScript;
 
 ## Local preview
 
-Download and extract the complete repository, then double-click `index.html` in Windows/Chrome. No server, localhost or Chrome security changes are required. Keep `catalog.js`, `app.js` and `styles.css` next to `index.html`. Product photos still use their original remote URLs and require internet access.
+Download and extract the complete repository, then double-click `index.html` in Windows/Chrome. No server, localhost or Chrome security changes are required. Keep `app.js` and `styles.css` next to `index.html`. `catalog.js` is no longer required to open the preview. Product photos still use their original remote URLs and require internet access.
 
-`catalog.js` is the browser-loadable copy of `catalog.json`; it is loaded as a classic script before `app.js`, so file:// does not require a JSON fetch. Keep both catalog files synchronized when changing source data.
+`index.html` embeds an exact JSON copy of `catalog.json` in the non-executable `muskane-catalog` script element. `app.js` parses it directly from the document: no fetch, module loader, server or separate catalog script is needed. Keep this embedded snapshot synchronized when updating the catalog. `catalog.js` remains as the previously generated companion snapshot, but the page does not load it.
 
 Optional HTTP preview: from this repository run `python3 -m http.server 4173 --bind 127.0.0.1`, then open **http://localhost:4173**. Remote workspaces require port 4173 forwarded to your device. This command does not deploy the website.
 
