@@ -29,7 +29,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .cart-toggle{position: relative;}
 .cart-toggle span{position: absolute; top: 0px; right: 0px; border-radius: 50%; background: var(--ink); color: white; min-width: 17px; height: 17px; display: grid; place-items: center; font: 10px Arial;}
 .menu-toggle{display: none;}
-.eyebrow{display: block; direction: ltr; font: 10px / 1.6 Arial, sans-serif; letter-spacing: 2.2px; color: var(--gold);}
+.eyebrow{display: block; direction: ltr; font: 12px / 1.6 Arial, sans-serif; letter-spacing: 2.2px; color: var(--gold);}
 
 
 
@@ -42,7 +42,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .button.secondary{background: transparent; color: var(--ink);}
 .button.secondary:hover{background: var(--cream);}
 
-.text-link{font-size: 12px; white-space: nowrap; border-bottom: 1px solid rgb(183, 169, 140); padding-bottom: 3px;}
+.text-link{font-size: 14px; white-space: nowrap; border-bottom: 1px solid rgb(183, 169, 140); padding-bottom: 3px;}
 .text-link:hover{color: var(--gold);}
 
 
@@ -64,9 +64,9 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .category-card{position: relative; padding: 17px 20px; background: var(--cream); border: 1px solid var(--line); transition: border-color 0.2s, background 0.2s;}
 .category-card:hover{background: rgb(237, 231, 219); border-color: rgb(185, 167, 128);}
 .category-card .number{position: absolute; left: 18px; top: 17px; font: 12px var(--serif); color: var(--gold);}
-.category-card .eyebrow{font-size: 9px; letter-spacing: 1.5px; padding-left: 28px;}
+.category-card .eyebrow{font-size: 11px; letter-spacing: 1.5px; padding-left: 28px;}
 .category-card h3{font-size: 20px; margin: 6px 0px 4px;}
-.category-card p{font-size: 11px; color: var(--muted); padding-inline-end: 20px;}
+.category-card p{font-size: 13px; color: var(--muted); padding-inline-end: 20px;}
 .category-card .arrow{position: absolute; left: 18px; bottom: 14px; font-size: 20px;}
 .product-grid{display: grid; grid-template-columns: repeat(4, minmax(0px, 1fr)); gap: 24px 18px; align-items: stretch;}
 .product-card{min-width: 0px; display: flex; flex-direction: column; background: rgb(255, 255, 255); border: 1px solid rgb(232, 228, 219); border-radius: 4px; overflow: hidden; transition: border-color 0.2s, box-shadow 0.2s;}
@@ -172,7 +172,7 @@ dialog input{width: 100%; padding: 12px 14px; border: 1px solid var(--line); bor
 .categories-grid{gap: 9px;}
 .category-card{padding: 15px 12px;}
 .category-card h3{font-size: 17px;}
-.category-card p{font-size: 10px;}
+.category-card p{font-size: 12px;}
 .footer-inner{grid-template-columns: 1.2fr 1fr 1.5fr;}
 .footer-inner > .footer-links:last-child{grid-column: 1 / -1; display: flex; align-items: center; gap: 24px;}
 .footer-inner > .footer-links:last-child h2{margin: 0px;}
@@ -206,13 +206,13 @@ body{font-size: 14px;}
 .section{padding-block: 26px;}
 .section-head{gap: 10px; margin-bottom: 16px;}
 .section-head h2{font-size: 23px; line-height: 1.6; margin-top: 3px;}
-.eyebrow{font-size: 9px; letter-spacing: 1.6px;}
-.text-link{font-size: 10px;}
+.eyebrow{font-size: 11px; letter-spacing: 1.6px;}
+.text-link{font-size: 12px;}
 .category-section{padding-block: 20px 10px;}
 .category-section + .section{padding-top: 16px;}
 .categories-grid{grid-template-columns: repeat(2, minmax(0px, 1fr)); gap: 8px;}
 .category-card{padding: 12px 14px; min-height: 70px;}
-.category-card .eyebrow{font-size: 7px; letter-spacing: 1px; padding: 0px;}
+.category-card .eyebrow{font-size: 9px; letter-spacing: 1px; padding: 0px;}
 .category-card .number, .category-card p{display: none;}
 .category-card h3{font-size: 16px; margin: 3px 0px 0px;}
 .category-card .arrow{font-size: 16px; left: 12px; bottom: 12px;}
@@ -285,8 +285,8 @@ h1, h2, h3{font-weight: 500;}
 .brand strong, .brand span, .eyebrow, .image-fallback .monogram{font-family: var(--latin);}
 .brand strong{font-size: 27px; font-weight: 500; letter-spacing: 3px;}
 .brand span{font-size: 8px; font-weight: 400; letter-spacing: 3px;}
-.eyebrow{font-weight: 500; font-size: 10px; letter-spacing: 1.8px;}
-.section-head .eyebrow, .collection-heading > .eyebrow{font-size:12px;}
+.eyebrow{font-weight: 500; font-size: 12px; letter-spacing: 1.8px;}
+.section-head .eyebrow, .collection-heading > .eyebrow{font-size:14px;}
 .product-info h3, .product-copy h1, .row-info h3, .image-fallback strong{font-family: var(--latin); font-weight: 500;}
 .price, .price small, .product-copy .price, .product-info .price, .row-info .price{font-family: var(--arabic); font-weight: 600;}
 .price small{font-weight: 400;}
@@ -373,11 +373,11 @@ h1, h2, h3{font-weight: 500;}
 .section-head h2{font-size: 23px;}
 .category-section{padding-block: 26px 14px;}
 .category-section + .section{padding-top: 22px;}
-.eyebrow{font-size: 8px; letter-spacing: 1.4px;}
-.section-head .eyebrow, .collection-heading > .eyebrow{font-size:10px;}
+.eyebrow{font-size: 10px; letter-spacing: 1.4px;}
+.section-head .eyebrow, .collection-heading > .eyebrow{font-size:12px;}
 .category-card{padding: 14px; min-height: 78px;}
 .category-card h3{font-size: 15px; line-height: 1.7;}
-.category-card .eyebrow{font-size: 7px;}
+.category-card .eyebrow{font-size: 9px;}
 .product-grid{gap: 20px 12px;}
 .product-info{padding: 13px 10px;}
 .product-info h3{font-size: 12px; line-height: 1.7; min-height: 64px; height: 64px;}
