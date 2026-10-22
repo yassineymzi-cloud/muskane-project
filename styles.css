@@ -88,7 +88,8 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .card-actions .button{flex: 1 1 0%; min-width: 0px; min-height: 44px; padding: 9px 8px; font-size: 12px; gap: 14px;}
 .card-actions .buy-button{background: #000; border-color: #000; color: #fff; transition: background-color .2s ease, color .2s ease, border-color .2s ease;}
 .card-actions .buy-button:hover, .card-actions .buy-button:focus-visible{background: #fff; border-color: #000; color: #000;}
-.card-actions .add{flex: 0 0 44px; background: transparent; border-color: var(--line); color: var(--ink); font-size: 21px;}
+.card-actions .add{flex: 0 0 54px; background: transparent; border-color: var(--line); color: var(--ink); font-size: 21px;}
+.card-actions .add svg{width: 22px; height: 22px; flex-shrink: 0;}
 .card-actions .add:hover{background: var(--cream); border-color: var(--gold);}
 .image-fallback{position: absolute; inset: 0px; display: flex; align-items: center; justify-content: center; flex-direction: column; text-align: center; padding: 18px; background: rgb(246, 243, 236); color: rgb(109, 102, 88);}
 .image-fallback .monogram{font: 48px/1 var(--serif); border: 1px solid rgb(207, 195, 173); border-radius: 50%; width: 76px; height: 76px; display: grid; place-items: center; color: rgb(154, 133, 97); margin-bottom: 14px;}
@@ -231,7 +232,7 @@ body{font-size: 14px;}
 .card-actions{gap: 5px; padding-top: 12px;}
 .card-actions .button{font-size: 11px; min-height: 44px; padding: 8px 4px; gap: 0px;}
 .card-actions .buy-button span{display: none;}
-.card-actions .add{flex-basis: 36px; font-size: 20px;}
+.card-actions .add{flex-basis: 46px; font-size: 20px;}
 .image-fallback{padding: 10px;}
 .image-fallback .monogram{width: 54px; height: 54px; font-size: 34px; margin-bottom: 10px;}
 .image-fallback strong{font-size: 11px;}
@@ -277,7 +278,7 @@ dialog{padding: 20px;}
 .header-inner{padding-inline: 10px;}
 .header-actions .icon-button{min-width: 36px;}
 .product-info{padding-inline: 8px;}
-.card-actions .add{flex-basis: 32px;}
+.card-actions .add{flex-basis: 42px;}
 .footer-brand{flex-direction: column; align-items: flex-start; gap: 15px;}
 .footer-brand p{max-width: none;}}
 @media (prefers-reduced-motion: reduce){html{scroll-behavior: auto;}
@@ -391,7 +392,7 @@ h1, h2, h3{font-weight: 500;}
 .product-info .price{color: #000; font-size: 23px; line-height: 1.5; margin-top: 10px;}
 .card-actions{padding-top: 12px; gap: 6px;}
 .card-actions .button{font-size: 10px; min-height: 44px;}
-.card-actions .add{font-size: 20px; flex-basis: 34px;}
+.card-actions .add{font-size: 20px; flex-basis: 44px;}
 .product-copy h1{font-size: 25px;}
 .description-content{font-size: 13px; line-height: 2.1;}
 .image-fallback strong{font-size: 10px;}
@@ -433,7 +434,7 @@ h1, h2, h3{font-weight: 500;}
 
 
 .product-info h3{color: #000;font-size: 13px;}
-.card-actions .add{flex-basis: 30px;}
+.card-actions .add{flex-basis: 40px;}
 .card-actions .button{font-size: 9px;}
 .header-actions .icon-button{min-width: 34px;}}
 
