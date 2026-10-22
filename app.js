@@ -2,8 +2,8 @@
 const collections = [
   {slug:'parfum-homme', name:'عطور رجالية', label:'FOR HIM', text:'حضور يعكس أسلوبك.'},
   {slug:'parfum-femme', name:'عطور نسائية', label:'FOR HER', text:'تفاصيل تعبّر عنك.'},
-  {slug:'packs-homme', name:'باكات رجالية', label:'SETS FOR HIM', text:'اكتشف أكثر من بصمة.'},
-  {slug:'packs-femme', name:'باكات نسائية', label:'SETS FOR HER', text:'أربع عطور، أربع بصمات.'}
+  {slug:'packs-homme', name:'باكات رجالية', label:'PACK FOR HIM', text:'اكتشف أكثر من بصمة.'},
+  {slug:'packs-femme', name:'باكات نسائية', label:'PACK FOR HER', text:'أربع عطور، أربع بصمات.'}
 ];
 
 /* Original transparent logos supplied by the user; no external image requests. */
@@ -47,7 +47,7 @@ function homepage() {
     </div>
   </section>
   ${brandStrip()}
-  <section class="section wrap category-section"><div class="section-head"><div><span class="eyebrow">FIND YOUR SIGNATURE</span><h2>اختر مجموعتك</h2></div><a class="text-link" href="#/collection/all">كل العطور ←</a></div><div class="categories-grid">${collections.map((c,i)=>`<a class="category-card" href="#/collection/${c.slug}"><span class="eyebrow">${c.label}</span><h3>${c.name}</h3><p>${productCount(products.filter(p=>inCollection(p,c.slug)).length)} · ${c.text}</p><span class="arrow" aria-hidden="true">←</span></a>`).join('')}</div></section>
+  <section class="section wrap category-section"><div class="section-head"><div><span class="eyebrow">FIND YOUR SIGNATURE</span><h2>التصنيفات</h2></div><a class="text-link" href="#/collection/all">كل العطور ←</a></div><div class="categories-grid">${collections.map((c,i)=>`<a class="category-card" href="#/collection/${c.slug}"><span class="eyebrow">${c.label}</span><h3>${c.name}</h3><p>${productCount(products.filter(p=>inCollection(p,c.slug)).length)} · ${c.text}</p><span class="arrow" aria-hidden="true">←</span></a>`).join('')}</div></section>
   ${section(collections[0])}
   <div class="tinted section"><div class="wrap"><div class="section-head"><div><span class="eyebrow">FOR HER</span><h2>بصمة بأنوثتك</h2></div><a class="text-link" href="#/collection/parfum-femme">العطور النسائية ←</a></div><div class="product-grid">${products.filter(p=>inCollection(p,'parfum-femme')).map(card).join('')}</div></div></div>
   ${section({slug:'packs', name:'باكات العطور', label:'THE DISCOVERY SETS'})}
