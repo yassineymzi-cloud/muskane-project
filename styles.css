@@ -494,3 +494,11 @@ h1, h2, h3{font-weight: 500;}
  .brand-strip__item{flex:0 0 112px;height:62px}
  .brand-strip__logo{max-height:60px}
 }
+
+
+/* Official MUSKANE logo, in the header and footer only. */
+.brand>.brand-image{display:block;width:172px;height:54px;object-fit:contain;object-position:center}
+.brand>.brand-fallback{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:54px;letter-spacing:0}
+.footer-brand .brand>.brand-image{background:#fffefa;border-radius:3px;padding:5px}
+.footer-brand .brand>.brand-fallback{align-items:flex-start}
+@media(max-width:767px){.header .brand>.brand-image{width:130px;height:44px}.header .brand>.brand-fallback{min-height:44px}.footer-brand .brand>.brand-image{width:150px;height:50px}}

@@ -508,6 +508,14 @@ h1, h2, h3{font-weight: 500;}
  .brand-strip__logo{max-height:60px}
 }
 
+
+/* Official MUSKANE logo, in the header and footer only. */
+.brand>.brand-image{display:block;width:172px;height:54px;object-fit:contain;object-position:center}
+.brand>.brand-fallback{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:54px;letter-spacing:0}
+.footer-brand .brand>.brand-image{background:#fffefa;border-radius:3px;padding:5px}
+.footer-brand .brand>.brand-fallback{align-items:flex-start}
+@media(max-width:767px){.header .brand>.brand-image{width:130px;height:44px}.header .brand>.brand-fallback{min-height:44px}.footer-brand .brand>.brand-image{width:150px;height:50px}}
+
 </style>
   <script id="muskane-catalog" type="application/json">
 {
@@ -980,7 +988,7 @@ h1, h2, h3{font-weight: 500;}
   <header class="header">
     <div class="header-inner">
       <button class="icon-button menu-toggle" aria-label="فتح القائمة" aria-expanded="false" aria-controls="navigation" data-action="menu"><svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
-      <a class="brand" href="#/" aria-label="MUSKANE PARFUM الرئيسية"><strong>MUSKANE</strong><span>P A R F U M</span></a>
+      <a class="brand" href="#/" aria-label="MUSKANE PARFUM الرئيسية"><img class="brand-image" src="https://assets.youcan.shop/stores/7f085f1e9e8fb6db9b329d4c8b1e85527120283b/2-FF8LWAf1y0O55tMO6UyBkzsp9hJ.png" alt="MUSKANE PARFUM" width="172" height="54" decoding="async" onerror="this.hidden=true;this.nextElementSibling.hidden=false"><span class="brand-fallback" hidden><strong>MUSKANE</strong><span>P A R F U M</span></span></a>
       <nav id="navigation" aria-label="التنقل الرئيسي"><a href="#/">الرئيسية</a><a href="#/collection/parfum-homme">عطور رجالية</a><a href="#/collection/parfum-femme">عطور نسائية</a><a href="#/collection/packs">الباكات</a></nav>
       <div class="header-actions"><button class="icon-button" data-action="search" aria-label="البحث عن عطر"><svg viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg></button><button class="icon-button cart-toggle" data-action="cart" aria-label="فتح سلة المعاينة"><svg viewBox="0 0 24 24"><path d="M5 7h14l1 14H4L5 7ZM9 8V6a3 3 0 0 1 6 0v2"/></svg><span id="cart-count">0</span></button></div>
     </div>
@@ -1083,7 +1091,7 @@ function footer() {
   const policies=catalog.sourceLinks.filter(u=>u.startsWith('/') || u.startsWith(catalog.source+'/pages/'));
   const socials=catalog.sourceLinks.filter(u=>/instagram|facebook|tiktok|wa.me/.test(u));
   const link=u=>{const full=u.startsWith('/')?catalog.source+u:u;const path=new URL(full).pathname;return `<a href="${esc(full)}" target="_blank" rel="noopener">${esc(labels[path]||path.split('/').pop().replaceAll('-',' '))} ←</a>`;};
-  $('#footer').innerHTML=`<div class="wrap footer-inner"><div class="footer-brand"><a class="brand" href="#/"><strong>MUSKANE</strong><span>P A R F U M</span></a><p>عطرك… بصمتك.<br>تشكيلة عطور تعبّر عن حضورك وأسلوبك.</p></div><div class="footer-links"><h2>اكتشف المجموعة</h2>${collections.map(c=>`<a href="#/collection/${c.slug}">${c.name}</a>`).join('')}<a href="#/collection/all">جميع العطور</a></div><div class="footer-links footer-policies"><h2>معلومات المتجر</h2><div class="policy-grid">${policies.map(link).join('')}</div></div><div class="footer-links"><h2>تابع MUSKANE</h2>${socials.map(u=>`<a href="${esc(u)}" target="_blank" rel="noopener">${/instagram/.test(u)?'Instagram':/tiktok/.test(u)?'TikTok':/facebook/.test(u)?'Facebook':'WhatsApp'} ←</a>`).join('')}</div></div><div class="wrap footer-bottom"><span>© ${new Date().getFullYear()} MUSKANE PARFUM</span><span>نسخة معاينة مستقلة · لا تستقبل طلبات شراء</span></div>`;
+  $('#footer').innerHTML=`<div class="wrap footer-inner"><div class="footer-brand"><a class="brand" href="#/"><img class="brand-image" src="https://assets.youcan.shop/stores/7f085f1e9e8fb6db9b329d4c8b1e85527120283b/2-FF8LWAf1y0O55tMO6UyBkzsp9hJ.png" alt="MUSKANE PARFUM" width="172" height="54" decoding="async" onerror="this.hidden=true;this.nextElementSibling.hidden=false"><span class="brand-fallback" hidden><strong>MUSKANE</strong><span>P A R F U M</span></span></a><p>عطرك… بصمتك.<br>تشكيلة عطور تعبّر عن حضورك وأسلوبك.</p></div><div class="footer-links"><h2>اكتشف المجموعة</h2>${collections.map(c=>`<a href="#/collection/${c.slug}">${c.name}</a>`).join('')}<a href="#/collection/all">جميع العطور</a></div><div class="footer-links footer-policies"><h2>معلومات المتجر</h2><div class="policy-grid">${policies.map(link).join('')}</div></div><div class="footer-links"><h2>تابع MUSKANE</h2>${socials.map(u=>`<a href="${esc(u)}" target="_blank" rel="noopener">${/instagram/.test(u)?'Instagram':/tiktok/.test(u)?'TikTok':/facebook/.test(u)?'Facebook':'WhatsApp'} ←</a>`).join('')}</div></div><div class="wrap footer-bottom"><span>© ${new Date().getFullYear()} MUSKANE PARFUM</span><span>نسخة معاينة مستقلة · لا تستقبل طلبات شراء</span></div>`;
 }
 function saveCart(){try{localStorage.setItem('muskane-preview-cart',JSON.stringify(cart));}catch{}updateCart();}
 function updateCart(){
