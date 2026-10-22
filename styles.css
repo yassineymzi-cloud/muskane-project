@@ -200,3 +200,60 @@ footer{background:#ece8de;margin-top:35px;border-top:1px solid #d9d1c0}
 }
 [hidden]{display:none!important}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important;animation:none!important}}
+
+
+/* White, consistent product-card image stages on collection and product pages only. */
+:is(#collection-grid, #main:has(.product-detail) .product-grid) > .product-card {
+  background: #FFFFFF;
+  border: 1px solid #eeede9;
+  border-radius: 8px;
+  overflow: hidden;
+}
+:is(#collection-grid, #main:has(.product-detail) .product-grid) > .product-card > a {
+  min-width: 0;
+  align-self: start;
+  width: 100%;
+}
+:is(#collection-grid, #main:has(.product-detail) .product-grid) > .product-card .image-box {
+  width: calc(100% - 20px);
+  margin: 10px 10px 0;
+  height: auto;
+  min-height: 0;
+  max-height: none;
+  aspect-ratio: 1 / 1.15;
+  background: #FFFFFF;
+  border: 1px solid #f0efec;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+:is(#collection-grid, #main:has(.product-detail) .product-grid) > .product-card .image-box img {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: clamp(14px, 1.6vw, 24px);
+  object-fit: contain;
+  object-position: center;
+  background: #FFFFFF;
+  border-radius: 6px;
+  transform: none;
+}
+:is(#collection-grid, #main:has(.product-detail) .product-grid) > .product-card .image-fallback {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: #FFFFFF;
+}
+@media (max-width: 767px) {
+  :is(#collection-grid, #main:has(.product-detail) .product-grid) > .product-card .image-box {
+    width: calc(100% - 16px);
+    margin: 8px 8px 0;
+  }
+  :is(#collection-grid, #main:has(.product-detail) .product-grid) > .product-card .image-box img {
+    padding: 12px;
+  }
+}
