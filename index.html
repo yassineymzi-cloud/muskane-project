@@ -9,7 +9,7 @@
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23262825'/%3E%3Ctext x='32' y='45' fill='%23f7f5ef' text-anchor='middle' font-family='serif' font-size='44'%3EM%3C/text%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+  <!-- Fonts are requested after the storefront renders, so an unavailable font host cannot block startup. -->
   <style id="muskane-styles">
 /* MUSKANE preview — a single responsive design system. */
 :root{--cream:#f5f2eb;--paper:#fffefa;--ink:#252a26;--muted:#656a63;--line:#e1ddd3;--gold:#8b7046;--serif:Georgia,'Times New Roman',serif;--gutter:clamp(18px,3.4vw,52px)}
@@ -676,7 +676,13 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape'){$('#navigation').cl
 $('#search-input').addEventListener('input',search);
 document.addEventListener('change',e=>{if(e.target.id==='sort'){const slug=$('#collection-grid').dataset.collection;const items=(slug==='all'?[...products]:products.filter(p=>inCollection(p,slug)));if(e.target.value==='asc')items.sort((a,b)=>a.price-b.price);if(e.target.value==='desc')items.sort((a,b)=>b.price-a.price);if(e.target.value==='name')items.sort((a,b)=>a.name.localeCompare(b.name));$('#collection-grid').innerHTML=items.map(card).join('');}});
 window.addEventListener('hashchange',route);
-Promise.resolve().then(()=>JSON.parse($('#muskane-catalog').textContent)).then(data=>{if(!data || !Array.isArray(data.products))throw Error('Missing catalog');catalog=data;products=data.products;cart=cart.filter(c=>c && products.some(p=>p.id===c.id) && Number.isInteger(c.qty) && c.qty>0 && c.qty<=99);footer();updateCart();route();}).catch(()=>{$('#main').innerHTML='<div class="error-panel"><h1>تعذّر تحميل المجموعة</h1><p>أعد تحميل الصفحة أو زر المتجر الأصلي.</p><a class="button" href="https://muskaneparfum.com">MUSKANE PARFUM ←</a></div>';});
+Promise.resolve().then(()=>JSON.parse($('#muskane-catalog').textContent)).then(data=>{if(!data || !Array.isArray(data.products))throw Error('Missing catalog');catalog=data;products=data.products;cart=cart.filter(c=>c && products.some(p=>p.id===c.id) && Number.isInteger(c.qty) && c.qty>0 && c.qty<=99);footer();updateCart();route();
+  // Dynamic loading keeps optional remote font CSS from blocking the inline app.
+  const fontStyles=document.createElement('link');
+  fontStyles.rel='stylesheet';
+  fontStyles.href='https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&family=Montserrat:wght@400;500;600&display=swap';
+  document.head.appendChild(fontStyles);
+}).catch(()=>{$('#main').innerHTML='<div class="error-panel"><h1>تعذّر تحميل المجموعة</h1><p>أعد تحميل الصفحة أو زر المتجر الأصلي.</p><a class="button" href="https://muskaneparfum.com">MUSKANE PARFUM ←</a></div>';});
 
 
 </script>
