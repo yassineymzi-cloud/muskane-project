@@ -1,3 +1,4 @@
+
 'use strict';
 const collections = [
   {slug:'parfum-homme', name:'عطور رجالية', label:'FOR HIM', text:'حضور يعكس أسلوبك.'},
@@ -17,18 +18,21 @@ function image(p, eager=false, index=0) {
   const img=p.images[index] || p.images[0];
   return `<div class="image-box"><img src="${esc(img.url)}" alt="${esc(p.name)}" loading="${eager?'eager':'lazy'}" decoding="async" ${eager?'fetchpriority="high"':''} width="600" height="750"><div class="image-fallback" hidden><span class="monogram" aria-hidden="true">M</span><strong>${esc(p.name)}</strong><small>الصورة غير متاحة حالياً</small></div></div>`;
 }
-document.addEventListener('error',e=>{if(e.target.tagName==='IMG' && e.target.closest('.official-banner')){e.target.closest('picture').hidden=true;e.target.closest('.official-banner').querySelector('.banner-fallback').hidden=false;}if(e.target.tagName==='IMG' && e.target.closest('.image-box')){e.target.hidden=true;e.target.nextElementSibling.hidden=false;}},true);
-function card(p) {return `<article class="product-card"><a href="${productLink(p)}" aria-label="عرض ${esc(p.name)}">${image(p)}</a><div class="product-info"><p class="product-category">${esc(p.categories[0]?.name)}</p><h3><a href="${productLink(p)}">${esc(p.name)}</a></h3>${price(p.price)}<div class="card-actions"><a class="button buy-button" href="${esc(p.url)}" target="_blank" rel="noopener" aria-label="شراء ${esc(p.name)} من المتجر الأصلي">شراء الآن <span aria-hidden="true">←</span></a><button class="button add" data-add="${p.id}" aria-label="إضافة ${esc(p.name)} لسلة المعاينة">+</button></div></div></article>`;}
+document.addEventListener('error',e=>{if(e.target.tagName==='IMG' && e.target.closest('.muskane-hero__visual'))e.target.hidden=true;if(e.target.tagName==='IMG' && e.target.closest('.image-box')){e.target.hidden=true;e.target.nextElementSibling.hidden=false;}},true);
+function card(p) {return `<article class="product-card"><a href="${productLink(p)}" aria-label="عرض ${esc(p.name)}">${image(p)}</a><div class="product-info"><p class="product-category">${esc(p.categories[0]?.name)}</p><h3 title="${esc(p.name)}"><a href="${productLink(p)}">${esc(p.name)}</a></h3>${price(p.price)}<div class="card-actions"><a class="button buy-button" href="${esc(p.url)}" target="_blank" rel="noopener" aria-label="شراء ${esc(p.name)} من المتجر الأصلي">شراء الآن <span aria-hidden="true">←</span></a><button class="button add" data-add="${p.id}" aria-label="إضافة ${esc(p.name)} لسلة المعاينة">+</button></div></div></article>`;}
 function section(c, limit) {const items=products.filter(p=>inCollection(p,c.slug));return `<section class="section wrap"><div class="section-head"><div><span class="eyebrow">${c.label}</span><h2>${c.name}</h2></div><a class="text-link" href="#/collection/${c.slug}">اكتشف المجموعة ←</a></div><div class="product-grid">${items.slice(0,limit||items.length).map(card).join('')}</div></section>`;}
 function homepage() {
-  const banners = {
-    desktop: 'https://assets.youcan.shop/stores/7f085f1e9e8fb6db9b329d4c8b1e85527120283b/muskane-parfum-desktop-1600x500-FF8Pi4XDYsQ5gMmrrYPxBILFj2M.jpg',
-    mobile: 'https://assets.youcan.shop/stores/7f085f1e9e8fb6db9b329d4c8b1e85527120283b/muskane-parfum-mobile-500x250-FF8Pj1AgSjQo6eEH1obHx3MSwnh.jpg'
-  };
-  return `<section class="hero official-hero"><div class="hero-inner">
-    <div class="hero-copy"><span class="eyebrow">MUSKANE · THE PERFUME EDIT</span><h1>عطرك… <span>بصمتك</span></h1><p>اكتشف عطراً يشبهك، من أول انطباع إلى آخر تفصيل.</p><div class="hero-actions"><a class="button" href="#/collection/all">اكتشف المجموعة <span aria-hidden="true">←</span></a><a class="text-link" href="#/collection/packs">اكتشف الباكات</a></div></div>
-    <div class="official-banner"><picture><source media="(max-width: 767px)" srcset="${banners.mobile}"><img src="${banners.desktop}" alt="MUSKANE PARFUM — بانر المتجر الرسمي" width="1600" height="500" fetchpriority="high" decoding="async"></picture><div class="banner-fallback" hidden><span class="banner-monogram">M</span><strong>MUSKANE</strong><span>PARFUM</span></div></div>
-  </div></section>
+  const heroProduct=products.find(p=>p.slug==='asad-lattafa-eau-de-parfum') || products[0];
+  return `<section class="muskane-hero" aria-labelledby="muskane-hero-title">
+    <div class="muskane-hero__visual"><img src="${esc(heroProduct.images[0].url)}" alt="${esc(heroProduct.name)}" width="1000" height="900" fetchpriority="high" decoding="async"></div>
+    <div class="muskane-hero__content">
+      <p class="muskane-hero__brand" lang="en">MUSKANE PARFUM</p>
+      <h1 class="muskane-hero__title" id="muskane-hero-title">عطرك… بصمتك</h1>
+      <p class="muskane-hero__subtitle">عطور مختارة للنساء والرجال</p>
+      <p class="muskane-hero__description">اكتشف عطراً يشبهك، من أول انطباع إلى آخر تفصيل.</p>
+      <div class="muskane-hero__actions"><a class="muskane-hero__cta" href="#/collection/all">اكتشف المجموعة</a><a class="muskane-hero__cta muskane-hero__cta--secondary" href="#/collection/packs">اكتشف الباكات</a></div>
+    </div>
+  </section>
   <div class="intro-line"><span>عطور رجالية ونسائية</span><span>أسعار بالدرهم المغربي</span><span>اختيارات من MUSKANE</span></div>
   <section class="section wrap category-section"><div class="section-head"><div><span class="eyebrow">FIND YOUR SIGNATURE</span><h2>اختر مجموعتك</h2></div><a class="text-link" href="#/collection/all">كل العطور ←</a></div><div class="categories-grid">${collections.map((c,i)=>`<a class="category-card" href="#/collection/${c.slug}"><span class="number">0${i+1}</span><span class="eyebrow">${c.label}</span><h3>${c.name}</h3><p>${productCount(products.filter(p=>inCollection(p,c.slug)).length)} · ${c.text}</p><span class="arrow" aria-hidden="true">←</span></a>`).join('')}</div></section>
   ${section(collections[0])}
@@ -98,4 +102,12 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape'){$('#navigation').cl
 $('#search-input').addEventListener('input',search);
 document.addEventListener('change',e=>{if(e.target.id==='sort'){const slug=$('#collection-grid').dataset.collection;const items=(slug==='all'?[...products]:products.filter(p=>inCollection(p,slug)));if(e.target.value==='asc')items.sort((a,b)=>a.price-b.price);if(e.target.value==='desc')items.sort((a,b)=>b.price-a.price);if(e.target.value==='name')items.sort((a,b)=>a.name.localeCompare(b.name));$('#collection-grid').innerHTML=items.map(card).join('');}});
 window.addEventListener('hashchange',route);
-Promise.resolve().then(()=>JSON.parse($('#muskane-catalog').textContent)).then(data=>{if(!data || !Array.isArray(data.products))throw Error('Missing catalog');catalog=data;products=data.products;cart=cart.filter(c=>c && products.some(p=>p.id===c.id) && Number.isInteger(c.qty) && c.qty>0 && c.qty<=99);footer();updateCart();route();}).catch(()=>{$('#main').innerHTML='<div class="error-panel"><h1>تعذّر تحميل المجموعة</h1><p>أعد تحميل الصفحة أو زر المتجر الأصلي.</p><a class="button" href="https://muskaneparfum.com">MUSKANE PARFUM ←</a></div>';});
+Promise.resolve().then(()=>JSON.parse($('#muskane-catalog').textContent)).then(data=>{if(!data || !Array.isArray(data.products))throw Error('Missing catalog');catalog=data;products=data.products;cart=cart.filter(c=>c && products.some(p=>p.id===c.id) && Number.isInteger(c.qty) && c.qty>0 && c.qty<=99);footer();updateCart();route();
+  // Dynamic loading keeps optional remote font CSS from blocking the inline app.
+  const fontStyles=document.createElement('link');
+  fontStyles.rel='stylesheet';
+  fontStyles.href='https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&family=Montserrat:wght@400;500;600&display=swap';
+  document.head.appendChild(fontStyles);
+}).catch(()=>{$('#main').innerHTML='<div class="error-panel"><h1>تعذّر تحميل المجموعة</h1><p>أعد تحميل الصفحة أو زر المتجر الأصلي.</p><a class="button" href="https://muskaneparfum.com">MUSKANE PARFUM ←</a></div>';});
+
+
