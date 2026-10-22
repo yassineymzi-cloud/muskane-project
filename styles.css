@@ -69,7 +69,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .category-card p{font-size: 13px; color: var(--muted); padding-inline-end: 20px;}
 .category-card .arrow{position: absolute; left: 18px; bottom: 14px; font-size: 20px;}
 .product-grid{display: grid; grid-template-columns: repeat(4, minmax(0px, 1fr)); gap: 24px 18px; align-items: stretch;}
-.product-card{min-width: 0px; display: flex; flex-direction: column; background: rgb(255, 255, 255); border: 1px solid rgb(232, 228, 219); border-radius: 4px; overflow: hidden; transition: border-color 0.2s, box-shadow 0.2s;}
+.product-card{min-width: 0px; display: flex; flex-direction: column; background: rgb(255, 255, 255); border: 2px solid rgb(232, 228, 219); border-radius: 4px; overflow: hidden; transition: border-color 0.2s, box-shadow 0.2s;}
 .product-card:hover{border-color: rgb(183, 167, 128); box-shadow: rgba(45, 42, 32, 0.063) 0px 8px 24px;}
 .product-card > a{display: block; width: 100%; min-width: 0px;}
 .image-box{position: relative; aspect-ratio: 1 / 1; background: white; overflow: hidden; display: flex; align-items: center; justify-content: center;}
