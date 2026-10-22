@@ -572,3 +572,11 @@ h1, h2, h3{font-weight: 500;}
 .footer-links .footer-socials a{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;padding:0;color:#fff;border:1px solid #ffffff40;border-radius:50%;transition:background .2s,color .2s,transform .2s;}
 .footer-links .footer-socials a:hover,.footer-links .footer-socials a:focus-visible{background:#fff;color:#000;transform:translateY(-2px);}
 .footer-socials svg{width:22px;height:22px;}
+
+/* Feedback for header search and cart controls. */
+.header-actions .icon-button{border-radius:50%;transition:background-color .2s ease,transform .2s ease;}
+.header-actions .icon-button svg{transition:transform .2s ease;}
+@media(hover:hover){.header-actions .icon-button:hover{background:#f2f2f2;transform:translateY(-2px);}.header-actions .icon-button:hover svg{transform:scale(1.08);}}
+.header-actions .icon-button:focus-visible{background:#f2f2f2;outline:2px solid #000;outline-offset:2px;}
+.header-actions .icon-button:active{transform:scale(.96);}
+@media(prefers-reduced-motion:reduce){.header-actions .icon-button,.header-actions .icon-button svg{transition:none;transform:none!important;}}
