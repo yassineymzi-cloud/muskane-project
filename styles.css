@@ -561,3 +561,9 @@ h1, h2, h3{font-weight: 500;}
 .header nav .packs-options a[href="#/collection/packs-femme"]{--nav-accent:#e6d0b4;}
 .header nav .packs-options a:hover,.header nav .packs-options a:focus-visible{background:#f7f7f7;transform:none;}
 @media(max-width:767px){.packs-options{position:static;width:100%;max-width:100%;box-shadow:none;margin-block:4px 8px;}}
+
+/* Gentle hover feedback for the header logo only. */
+.header .brand>.brand-image{transition:transform .3s ease;transform-origin:center;}
+@media(hover:hover){.header .brand:hover>.brand-image{transform:scale(1.04);}}
+.header .brand:focus-visible>.brand-image{transform:scale(1.04);}
+@media(prefers-reduced-motion:reduce){.header .brand>.brand-image{transition:none;}.header .brand:hover>.brand-image,.header .brand:focus-visible>.brand-image{transform:none;}}
