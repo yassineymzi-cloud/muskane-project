@@ -462,14 +462,15 @@ h1, h2, h3{font-weight: 500;}
 
 
 /* Homepage Hero: one component, no inherited slider layers. */
-.muskane-hero{--muskane-hero-bg:#f8f1e5;width:calc(100% - 48px);max-width:1440px;margin:20px auto 0;height:clamp(320px,30vw,420px);min-height:320px;max-height:420px;position:relative;overflow:hidden;border-radius:16px;display:grid;grid-template-columns:minmax(0,57fr) minmax(0,43fr);direction:ltr;background:var(--muskane-hero-bg)}
+.muskane-hero{--muskane-hero-bg:#f8f1e5;--muskane-hero-edge:url("https://assets.youcan.shop/stores/7f085f1e9e8fb6db9b329d4c8b1e85527120283b/muskane-parfum-desktop-1600x500-FF8Pi4XDYsQ5gMmrrYPxBILFj2M.jpg");width:calc(100% - 48px);max-width:1440px;margin:20px auto 0;height:clamp(320px,30vw,420px);min-height:320px;max-height:420px;position:relative;overflow:hidden;border-radius:16px;display:grid;grid-template-columns:minmax(0,57fr) minmax(0,43fr);direction:ltr;background:var(--muskane-hero-bg)}
 .muskane-hero__visual{position:relative;min-width:0;min-height:0;height:100%;background:var(--muskane-hero-bg)}
-.muskane-hero__visual::before{content:"";position:absolute;z-index:1;top:0;right:0;bottom:0;width:clamp(14px,2vw,24px);background:linear-gradient(to right,#f8f1e500 0%,#f8f1e533 45%,var(--muskane-hero-bg) 100%);pointer-events:none}
+/* Extend only the blank outermost 1% of the original artwork. No image filter. */
+.muskane-hero__visual::before{content:"";position:absolute;z-index:1;top:0;right:0;bottom:0;width:clamp(14px,2vw,24px);background-color:var(--muskane-hero-bg);background-image:var(--muskane-hero-edge);background-size:10000% 100%;background-position:right center;background-repeat:no-repeat;-webkit-mask-image:linear-gradient(to right,transparent,#000);mask-image:linear-gradient(to right,transparent,#000);pointer-events:none}
 .muskane-hero__visual picture{display:block;width:100%;height:100%}
 .muskane-hero__visual img{display:block;width:100%;height:100%;object-fit:cover;object-position:left center}
 .muskane-hero__visual img[hidden]{display:none}
 .muskane-hero__visual:has(img[hidden])::after{content:'✧';position:absolute;inset:0;display:grid;place-items:center;font-size:100px;font-weight:400;color:#ae9470}
-.muskane-hero__content{width:100%;min-width:0;box-sizing:border-box;padding:clamp(22px,2.5vw,40px);display:flex;flex-direction:column;justify-content:center;align-items:stretch;gap:10px;direction:rtl;text-align:right;overflow:visible;position:static;transform:none;background:var(--muskane-hero-bg)}
+.muskane-hero__content{width:100%;min-width:0;box-sizing:border-box;padding:clamp(22px,2.5vw,40px);display:flex;flex-direction:column;justify-content:center;align-items:stretch;gap:10px;direction:rtl;text-align:right;overflow:visible;position:static;transform:none;background-color:var(--muskane-hero-bg);background-image:var(--muskane-hero-edge);background-size:10000% 100%;background-position:right center;background-repeat:no-repeat}
 .muskane-hero__brand{font:500 11px/1.6 'Montserrat',sans-serif;letter-spacing:2px;direction:ltr;text-align:right;margin:0;color:#89704b}
 .muskane-hero__title{font-family:'Cairo',sans-serif;font-size:clamp(36px,3.5vw,56px);font-weight:500;line-height:1.3;letter-spacing:0;max-width:100%;margin:0;white-space:normal;overflow-wrap:normal;word-break:normal;overflow:visible;direction:rtl}
 .muskane-hero__subtitle{font:500 clamp(14px,1.15vw,17px)/1.8 'Cairo',sans-serif;letter-spacing:0;margin:0;color:#4f564b}
@@ -478,10 +479,10 @@ h1, h2, h3{font-weight: 500;}
 .muskane-hero__cta{min-width:0;min-height:46px;padding:11px 16px;display:inline-flex;justify-content:center;align-items:center;text-align:center;font:600 12px/1.8 'Cairo',sans-serif;letter-spacing:0;border:1px solid #252a26;border-radius:3px;background:#252a26;color:#fffefa;text-decoration:none;white-space:normal;transition:background .2s,color .2s}
 .muskane-hero__cta:hover{background:#414b40}.muskane-hero__cta--secondary{background:transparent;color:#252a26;border-color:#b9aa8e}.muskane-hero__cta--secondary:hover{background:#e9e0d1;color:#252a26}
 @media(max-width:768px){
- .muskane-hero{width:calc(100% - 24px);height:auto;min-height:0;max-height:none;margin-top:12px;display:flex;flex-direction:column;border-radius:16px}
+ .muskane-hero{--muskane-hero-edge:url("https://assets.youcan.shop/stores/7f085f1e9e8fb6db9b329d4c8b1e85527120283b/muskane-parfum-mobile-500x250-FF8Pj1AgSjQo6eEH1obHx3MSwnh.jpg");width:calc(100% - 24px);height:auto;min-height:0;max-height:none;margin-top:12px;display:flex;flex-direction:column;border-radius:16px}
  .muskane-hero__visual{flex:none;height:clamp(150px,38vw,190px);width:100%}
  .muskane-hero__visual img{object-position:center}
- .muskane-hero__visual::before{top:auto;left:0;right:0;bottom:0;width:100%;height:16px;background:linear-gradient(to bottom,#f8f1e500 0%,#f8f1e533 45%,var(--muskane-hero-bg) 100%)}
+ .muskane-hero__visual::before{top:auto;left:0;right:0;bottom:0;width:100%;height:16px;background-size:10000% 10000%;background-position:right top;-webkit-mask-image:linear-gradient(to bottom,transparent,#000);mask-image:linear-gradient(to bottom,transparent,#000)}
  .muskane-hero__content{flex:1;min-width:0;padding:20px 24px 24px;gap:10px;position:static;overflow:visible}
  .muskane-hero__brand{font-size:9px;letter-spacing:1.8px}
  .muskane-hero__title{font-size:clamp(32px,9vw,46px);line-height:1.3;letter-spacing:0}
