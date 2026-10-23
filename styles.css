@@ -37,7 +37,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .cart-toggle{position: relative;}
 .cart-toggle span{position: absolute; top: 0px; right: 0px; border-radius: 50%; background: var(--ink); color: white; min-width: 17px; height: 17px; display: grid; place-items: center; font: 10px Arial;}
 .menu-toggle{display: none;}
-.eyebrow{display: block; direction: ltr; font: 12px / 1.6 Arial, sans-serif; letter-spacing: 2.2px; color: var(--gold);}
+.eyebrow{display: block; direction: ltr; font: 12px / 1.6 Arial, sans-serif; letter-spacing: 2.2px; color: #c9aa65;}
 
 
 
@@ -51,7 +51,8 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .button.secondary:hover{background: var(--cream);}
 
 .text-link{font-size: 14px; white-space: nowrap; border-bottom: 1px solid rgb(183, 169, 140); padding-bottom: 3px;}
-.text-link:hover{color: var(--gold);}
+.text-link{transition:color .2s ease,border-color .2s ease;}
+.text-link:hover,.text-link:focus-visible{color:#c9aa65;border-bottom-color:#c9aa65;}
 
 
 
@@ -483,8 +484,8 @@ h1, h2, h3{font-weight: 500;}
 .muskane-hero__subtitle{font:500 clamp(14px,1.15vw,17px)/1.8 'Cairo',sans-serif;letter-spacing:0;margin:0;color:#4f564b}
 .muskane-hero__description{font:400 13px/2 'Cairo',sans-serif;letter-spacing:0;margin:0;color:#656a60}
 .muskane-hero__actions{display:flex;flex-wrap:wrap;align-items:stretch;gap:10px;margin:4px 0 0;min-width:0}
-.muskane-hero__cta{min-width:0;min-height:46px;padding:11px 16px;display:inline-flex;justify-content:center;align-items:center;text-align:center;font:600 12px/1.8 'Cairo',sans-serif;letter-spacing:0;border:1px solid #252a26;border-radius:3px;background:#252a26;color:#fffefa;text-decoration:none;white-space:normal;transition:background .2s,color .2s}
-.muskane-hero__cta:hover{background:#414b40}.muskane-hero__cta--secondary{background:transparent;color:#252a26;border-color:#b9aa8e}.muskane-hero__cta--secondary:hover{background:#e9e0d1;color:#252a26}
+.muskane-hero__cta{min-width:0;min-height:46px;padding:11px 16px;display:inline-flex;justify-content:center;align-items:center;text-align:center;font:600 12px/1.8 'Cairo',sans-serif;letter-spacing:0;border:1px solid #000;border-radius:3px;background:#000;color:#fff;text-decoration:none;white-space:normal;transition:background .2s,color .2s}
+.muskane-hero__cta:not(.muskane-hero__cta--secondary):hover,.muskane-hero__cta:not(.muskane-hero__cta--secondary):focus-visible{background:#fff;color:#000;border-color:#000;}.muskane-hero__cta--secondary{background:transparent;color:#252a26;border-color:#b9aa8e}.muskane-hero__cta--secondary:hover{background:#e9e0d1;color:#252a26}
 @media(max-width:768px){
  .muskane-hero{width:calc(100% - 24px);height:auto;aspect-ratio:2/1;min-height:0;max-height:none;margin-top:12px;display:grid;grid-template-columns:minmax(0,62fr) minmax(0,38fr);border-radius:16px}
  .muskane-hero__visual{position:absolute;inset:0;width:100%;height:100%}
@@ -543,7 +544,7 @@ h1, h2, h3{font-weight: 500;}
 .category-card{padding:0;min-height:0;aspect-ratio:1942/809;display:flex;align-items:center;overflow:hidden;background:#fff;}
 .category-art{transition:transform .35s ease;position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;}
 .category-caption{position:relative;z-index:1;width:58%;margin-inline-start:0;padding:10px 12px;box-sizing:border-box;}
-.category-card .eyebrow{padding:0;font-size:11px;letter-spacing:1px;color:#252a26;}
+.category-card .eyebrow{padding:0;font-size:11px;letter-spacing:1px;color:#c9aa65;}
 .category-card h3{font-size:19px;line-height:1.5;margin:4px 0;}
 .category-card p{font-size:12px;line-height:1.6;padding:0;margin:0;color:#363a35;}
 .category-card .arrow{transition:transform .25s ease;position:static;display:block;font-size:17px;line-height:1;margin-top:5px;}
