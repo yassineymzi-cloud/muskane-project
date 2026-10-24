@@ -112,6 +112,12 @@ function updateCart(){
 let toastTimer;function toast(t){$('#toast').textContent=t;$('#toast').classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>$('#toast').classList.remove('show'),2500);}
 function search(){const q=$('#search-input').value.trim().toLocaleLowerCase();const found=q?products.filter(p=>p.name.toLocaleLowerCase().includes(q)||p.categories.some(c=>c.name.includes(q))):[];$('#search-status').textContent=q?`${found.length} نتائج`:'اكتب اسم العطر أو الفئة';$('#search-results').innerHTML=found.map(p=>`<a class="search-row" href="${productLink(p)}" data-close="search-dialog">${image(p)}<div class="row-info"><h3>${esc(p.name)}</h3>${price(p.price)}</div><span aria-hidden="true">←</span></a>`).join('');}
 function closePacksMenu(){ $('#packs-options').hidden=true;$('#packs-trigger').setAttribute('aria-expanded','false');}
+let packsLeaveTimer;
+$('.packs-menu').addEventListener('pointerleave',e=>{
+  if(e.pointerType==='mouse')packsLeaveTimer=setTimeout(closePacksMenu,150);
+});
+$('.packs-menu').addEventListener('pointerenter',()=>clearTimeout(packsLeaveTimer));
+
 document.addEventListener('click',e=>{
   if(e.target.closest('#packs-trigger')){e.preventDefault();const open=$('#packs-options').hidden;$('#packs-options').hidden=!open;$('#packs-trigger').setAttribute('aria-expanded',String(open));}
   else if(!e.target.closest('.packs-menu') || e.target.closest('#packs-options a'))closePacksMenu();
