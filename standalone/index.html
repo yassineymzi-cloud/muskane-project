@@ -1198,7 +1198,7 @@ let packsLeaveTimer;
 $('.packs-menu').addEventListener('pointerleave',e=>{
   if(e.pointerType==='mouse')packsLeaveTimer=setTimeout(closePacksMenu,150);
 });
-$('.packs-menu').addEventListener('pointerenter',()=>clearTimeout(packsLeaveTimer));
+$('.packs-menu').addEventListener('pointerenter',e=>{clearTimeout(packsLeaveTimer);if(e.pointerType==='mouse'){$('#packs-options').hidden=false;$('#packs-trigger').setAttribute('aria-expanded','true');}});
 
 document.addEventListener('click',e=>{
   if(e.target.closest('#packs-trigger')){e.preventDefault();const open=$('#packs-options').hidden;$('#packs-options').hidden=!open;$('#packs-trigger').setAttribute('aria-expanded',String(open));}
